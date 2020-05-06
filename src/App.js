@@ -17,6 +17,28 @@ function App() {
     setData(newData)
   }
 
+  const empiricalMean = data => {
+    const sum = {
+      cx: data.map(value => value.cx).reduce((accumulator, value) => accumulator + value, 0),
+      cy: data.map(value => value.cy).reduce((accumulator, value) => accumulator + value, 0)
+    }
+    return {
+      cx: sum.cx /= data.length,
+      cy: sum.cy /= data.length,
+    }
+  }
+
+  const deviationsFromMean = data => {
+    const mean = empiricalMean(data)
+    return data.map(value => {
+      return {
+      cx: value.cx -= mean.cx,
+      cy: value.cy -= mean.cy
+    }
+  })
+  }
+
+  // this executes on page load and every time the data changes
   useEffect(() => {
     const svg = select(svgRef.current);
 
@@ -53,12 +75,15 @@ function App() {
       .attr("r", 3)
       .attr("cx", value => xScale(value.cx))
       .attr("cy", value => yScale(value.cy))
+
+      console.log(empiricalMean(data))
+      console.log(deviationsFromMean(data))
   }, [data]);
 
   return (
     <React.Fragment>
       <h1>Webtools für die Lehre</h1>
-      <svg ref={svgRef} width="700" height="700" viewBox="0 0 700 700">
+      <svg ref={svgRef} width="650" height="650" viewBox="0 0 650 650">
         <g className="x-axis" />
         <g className="y-axis" />
       </svg>
