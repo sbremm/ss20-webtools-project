@@ -10,8 +10,8 @@ function App() {
     let newData = []
     for (let i = 0; i < 50; i++) {
       newData = newData.concat({
-        cx: Math.random() * 250,
-        cy: Math.random() * 200,
+        cx: Math.random() * 1000 - 500,
+        cy: Math.random() * 1000 - 500,
       })
     }
     setData(newData)
@@ -22,13 +22,15 @@ function App() {
 
     const maxX = Math.max(...data.map(value => value.cx))
     const maxY = Math.max(...data.map(value => value.cy))
+    const minX = Math.min(...data.map(value => value.cx))
+    const minY = Math.min(...data.map(value => value.cy))
 
     const xScale = scaleLinear()
-      .domain([0, maxX])
+      .domain([minX, maxX])
       .range([0, 600]);
 
     const yScale = scaleLinear()
-      .domain([0, maxY])
+      .domain([minY, maxY])
       .range([0, 600]);
 
     const xAxis = axisBottom(xScale)
