@@ -29,9 +29,10 @@ function App() {
       .range([0, 100]);
 
     svg
-      .selectAll("circle")
+      .selectAll(".dataPoint")
       .data(data)
       .join("circle")
+      .attr("class", "dataPoint")
       .attr("r", 1)
       .attr("cx", value => xScale(value.cx))
       .attr("cy", value => yScale(value.cy))
