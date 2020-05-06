@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
 import { axisBottom, axisRight, scaleLinear, select } from "d3";
+import { ctranspose, eigs, multiply } from "mathjs"
 
 function App() {
   const [data, setData] = useState([]);
@@ -76,8 +77,16 @@ function App() {
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
 
-    console.log(empiricalMean(data))
-    console.log(deviationsFromMean(data))
+    console.log("Emprical mean", empiricalMean(data))
+
+    const deviations = deviationsFromMean(data)
+    console.log("Deviations from mean", deviations)
+
+    const covarianceMatrix = multiply(1 / (data.length - 1), ctranspose(deviations))
+    console.log("Covariance Matrix", covarianceMatrix)
+
+    // const eigenvalues = eigs(covarianceMatrix)
+    // console.log(eigs)
   }, [data]);
 
   return (
