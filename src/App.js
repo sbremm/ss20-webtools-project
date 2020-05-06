@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
-import { scaleLinear, select } from "d3";
+import { axisBottom, axisRight, scaleLinear, select } from "d3";
 
 function App() {
   const [data, setData] = useState([]);
@@ -20,20 +20,35 @@ function App() {
   useEffect(() => {
     const svg = select(svgRef.current);
 
+    const maxX = Math.max(...data.map(value => value.cx))
+    const maxY = Math.max(...data.map(value => value.cy))
+
     const xScale = scaleLinear()
-      .domain([0, Math.max(...data.map(value => value.cx))])
-      .range([0, 100]);
+      .domain([0, maxX])
+      .range([0, 600]);
 
     const yScale = scaleLinear()
-      .domain([0, Math.max(...data.map(value => value.cy))])
-      .range([0, 100]);
+      .domain([0, maxY])
+      .range([0, 600]);
+
+    const xAxis = axisBottom(xScale)
+    svg
+      .select(".x-axis")
+      .style("transform", "translateY(600px)")
+      .call(xAxis);
+
+    const yAxis = axisRight(yScale);
+    svg
+      .select(".y-axis")
+      .style("transform", "translateX(600px)")
+      .call(yAxis);
 
     svg
       .selectAll(".dataPoint")
       .data(data)
       .join("circle")
       .attr("class", "dataPoint")
-      .attr("r", 1)
+      .attr("r", 3)
       .attr("cx", value => xScale(value.cx))
       .attr("cy", value => yScale(value.cy))
   }, [data]);
@@ -41,10 +56,13 @@ function App() {
   return (
     <React.Fragment>
       <h1>Webtools für die Lehre</h1>
-      <svg ref={svgRef} width="auto" height="80vh" viewBox="0 0 100 100"></svg>
+      <svg ref={svgRef} width="700" height="700" viewBox="0 0 700 700">
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
       <br />
       <button onClick={generateRandomScatterPlot}>
-        Generate random scatter
+        Generate random scatter plot
       </button>
     </React.Fragment>
   );
