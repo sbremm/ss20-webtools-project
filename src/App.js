@@ -1,17 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
-import { select } from "d3";
+import { scaleLinear, select } from "d3";
 
 function App() {
   const [data, setData] = useState([]);
   const svgRef = useRef();
 
   const generateRandomScatterPlot = () => {
-    var newData = []
+    let newData = []
     for (let i = 0; i < 50; i++) {
       newData = newData.concat({
-        cx: Math.random() * 100,
-        cy: Math.random() * 100,
+        cx: Math.random() * 250,
+        cy: Math.random() * 200,
       })
     }
     setData(newData)
@@ -19,13 +19,22 @@ function App() {
 
   useEffect(() => {
     const svg = select(svgRef.current);
+
+    const xScale = scaleLinear()
+      .domain([0, Math.max(...data.map(value => value.cx))])
+      .range([0, 100]);
+
+    const yScale = scaleLinear()
+      .domain([0, Math.max(...data.map(value => value.cy))])
+      .range([0, 100]);
+
     svg
       .selectAll("circle")
       .data(data)
       .join("circle")
       .attr("r", 1)
-      .attr("cx", value => value.cx)
-      .attr("cy", value => value.cy)
+      .attr("cx", value => xScale(value.cx))
+      .attr("cy", value => yScale(value.cy))
   }, [data]);
 
   return (
