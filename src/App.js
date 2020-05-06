@@ -9,43 +9,43 @@ function App() {
   const generateRandomScatterPlot = () => {
     let newData = []
     for (let i = 0; i < 50; i++) {
-      newData = newData.concat({
-        cx: Math.random() * 1000 - 500,
-        cy: Math.random() * 1000 - 500,
-      })
+      newData = newData.concat([[
+        Math.random() * 1000 - 500,
+        Math.random() * 1000 - 500,
+      ]])
     }
     setData(newData)
   }
 
   const empiricalMean = data => {
-    const sum = {
-      cx: data.map(value => value.cx).reduce((accumulator, value) => accumulator + value, 0),
-      cy: data.map(value => value.cy).reduce((accumulator, value) => accumulator + value, 0)
-    }
-    return {
-      cx: sum.cx /= data.length,
-      cy: sum.cy /= data.length,
-    }
+    const sum = [
+      data.map(value => value[0]).reduce((accumulator, value) => accumulator + value, 0),
+      data.map(value => value[1]).reduce((accumulator, value) => accumulator + value, 0)
+    ]
+    return [
+      sum[0] /= data.length,
+      sum[1] /= data.length,
+    ]
   }
 
   const deviationsFromMean = data => {
     const mean = empiricalMean(data)
     return data.map(value => {
-      return {
-      cx: value.cx -= mean.cx,
-      cy: value.cy -= mean.cy
-    }
-  })
+      return [
+        value[0] -= mean[0],
+        value[1] -= mean[1]
+      ]
+    })
   }
 
   // this executes on page load and every time the data changes
   useEffect(() => {
     const svg = select(svgRef.current);
 
-    const maxX = Math.max(...data.map(value => value.cx))
-    const maxY = Math.max(...data.map(value => value.cy))
-    const minX = Math.min(...data.map(value => value.cx))
-    const minY = Math.min(...data.map(value => value.cy))
+    const maxX = Math.max(...data.map(value => value[0]))
+    const maxY = Math.max(...data.map(value => value[1]))
+    const minX = Math.min(...data.map(value => value[0]))
+    const minY = Math.min(...data.map(value => value[1]))
 
     const xScale = scaleLinear()
       .domain([minX, maxX])
@@ -73,11 +73,11 @@ function App() {
       .join("circle")
       .attr("class", "dataPoint")
       .attr("r", 3)
-      .attr("cx", value => xScale(value.cx))
-      .attr("cy", value => yScale(value.cy))
+      .attr("cx", value => xScale(value[0]))
+      .attr("cy", value => yScale(value[1]))
 
-      console.log(empiricalMean(data))
-      console.log(deviationsFromMean(data))
+    console.log(empiricalMean(data))
+    console.log(deviationsFromMean(data))
   }, [data]);
 
   return (
