@@ -39,6 +39,7 @@ const ScatterPlot = ({ data }) => {
       .join("circle")
       .attr("class", "dataPoint")
       .attr("r", 3)
+      .transition()
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
   }, [data]);
