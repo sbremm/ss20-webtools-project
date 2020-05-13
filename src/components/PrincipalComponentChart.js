@@ -41,11 +41,11 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .attr('width', xScale.bandwidth())
       .transition()
       .attr('height', value => 150 - yScale(value))
-      console.log([principalComponents])
-    }, [principalComponents])
+    console.log([principalComponents])
+  }, [principalComponents])
 
   return (
-    <svg ref={svgRef} height="200" width="400">
+    <svg ref={svgRef}>
       <g className="x-axis" />
       <g className="y-axis" />
     </svg>

@@ -45,7 +45,7 @@ const ScatterPlot = ({ data }) => {
   }, [data]);
 
   return (
-    <svg ref={svgRef} width="650" height="650" viewBox="0 0 650 650">
+    <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
       <g className="x-axis" />
       <g className="y-axis" />
     </svg>
