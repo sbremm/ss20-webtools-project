@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import PCA from "pca-js"
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import PCA from 'pca-js'
 import ScatterPlot from './components/ScatterPlot'
 import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
