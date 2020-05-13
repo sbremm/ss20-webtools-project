@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ss20-webtools-projekt/static/css/main.2810f382.chunk.css",
+    "main.js": "/ss20-webtools-projekt/static/js/main.456ad818.chunk.js",
+    "main.js.map": "/ss20-webtools-projekt/static/js/main.456ad818.chunk.js.map",
+    "runtime-main.js": "/ss20-webtools-projekt/static/js/runtime-main.00bcc520.js",
+    "runtime-main.js.map": "/ss20-webtools-projekt/static/js/runtime-main.00bcc520.js.map",
+    "static/js/2.9181b189.chunk.js": "/ss20-webtools-projekt/static/js/2.9181b189.chunk.js",
+    "static/js/2.9181b189.chunk.js.map": "/ss20-webtools-projekt/static/js/2.9181b189.chunk.js.map",
+    "index.html": "/ss20-webtools-projekt/index.html",
+    "precache-manifest.119711dfe2c344fedbd4b1851abd6e5d.js": "/ss20-webtools-projekt/precache-manifest.119711dfe2c344fedbd4b1851abd6e5d.js",
+    "service-worker.js": "/ss20-webtools-projekt/service-worker.js",
+    "static/css/main.2810f382.chunk.css.map": "/ss20-webtools-projekt/static/css/main.2810f382.chunk.css.map",
+    "static/js/2.9181b189.chunk.js.LICENSE.txt": "/ss20-webtools-projekt/static/js/2.9181b189.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.00bcc520.js",
+    "static/js/2.9181b189.chunk.js",
+    "static/css/main.2810f382.chunk.css",
+    "static/js/main.456ad818.chunk.js"
+  ]
+}
