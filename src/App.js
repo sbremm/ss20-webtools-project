@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
 import { axisBottom, axisRight, scaleLinear, select } from "d3";
-import { ctranspose, eigs, multiply } from "mathjs"
+import PCA from "pca-js"
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([[0, 0]]);
   const svgRef = useRef();
 
   const generateRandomScatterPlot = () => {
@@ -16,27 +16,6 @@ function App() {
       ]])
     }
     setData(newData)
-  }
-
-  const empiricalMean = data => {
-    const sum = [
-      data.map(value => value[0]).reduce((accumulator, value) => accumulator + value, 0),
-      data.map(value => value[1]).reduce((accumulator, value) => accumulator + value, 0)
-    ]
-    return [
-      sum[0] /= data.length,
-      sum[1] /= data.length,
-    ]
-  }
-
-  const deviationsFromMean = data => {
-    const mean = empiricalMean(data)
-    return data.map(value => {
-      return [
-        value[0] -= mean[0],
-        value[1] -= mean[1]
-      ]
-    })
   }
 
   // this executes on page load and every time the data changes
@@ -77,16 +56,8 @@ function App() {
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
 
-    console.log("Emprical mean", empiricalMean(data))
-
-    const deviations = deviationsFromMean(data)
-    console.log("Deviations from mean", deviations)
-
-    const covarianceMatrix = multiply(1 / (data.length - 1), ctranspose(deviations))
-    console.log("Covariance Matrix", covarianceMatrix)
-
-    // const eigenvalues = eigs(covarianceMatrix)
-    // console.log(eigs)
+    const vectors = PCA.getEigenVectors(data)
+    console.log(vectors)
   }, [data]);
 
   return (
