@@ -2,9 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import "./App.css";
 import { axisBottom, axisRight, scaleLinear, select } from "d3";
 import PCA from "pca-js"
+import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
 function App() {
   const [data, setData] = useState([[0, 0]]);
+  const [principalComponents, setPrincipalComponents] = useState([0, 0])
   const svgRef = useRef();
 
   const generateRandomScatterPlot = () => {
@@ -57,7 +59,7 @@ function App() {
       .attr("cy", value => yScale(value[1]))
 
     const vectors = PCA.getEigenVectors(data)
-    console.log(vectors)
+    setPrincipalComponents(vectors.map(vector => vector.eigenvalue))
   }, [data]);
 
   return (
@@ -71,6 +73,8 @@ function App() {
       <button onClick={generateRandomScatterPlot}>
         Generate random scatter plot
       </button>
+      <br />
+      <PrincipalComponentsChart principalComponents={principalComponents} />
     </React.Fragment>
   );
 }
