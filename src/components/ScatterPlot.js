@@ -25,12 +25,14 @@ const ScatterPlot = ({ data }) => {
     svg
       .select(".x-axis")
       .style("transform", "translateY(600px)")
+      .transition()
       .call(xAxis);
 
     const yAxis = axisRight(yScale);
     svg
       .select(".y-axis")
       .style("transform", "translateX(600px)")
+      .transition()
       .call(yAxis);
 
     svg

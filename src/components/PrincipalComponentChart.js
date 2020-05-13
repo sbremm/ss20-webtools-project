@@ -28,6 +28,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
     svg
       .select('.y-axis')
       .style('transform', 'translateX(300px)')
+      .transition()
       .call(yAxis);
 
     svg
