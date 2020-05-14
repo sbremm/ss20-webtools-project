@@ -3,3 +3,14 @@ svg {
   overflow: visible;
   margin-bottom: 2rem;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  margin-bottom: 1rem;
+}
