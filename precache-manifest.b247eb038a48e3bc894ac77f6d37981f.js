@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "adea4ffe534e1a1b49f7a59f8a1a3e9a",
+    "revision": "ee7b25ca1d57ae36e7928288aa65e4f7",
     "url": "/ss20-webtools-projekt/index.html"
   },
   {
