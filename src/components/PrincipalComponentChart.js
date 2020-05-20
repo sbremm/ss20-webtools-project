@@ -45,10 +45,13 @@ const PrincipalComponentChart = ({ principalComponents }) => {
   }, [principalComponents])
 
   return (
-    <svg ref={svgRef}>
-      <g className="x-axis" />
-      <g className="y-axis" />
-    </svg>
+    <div id="principalComponents">
+      <h3>Principal Components</h3>
+      <svg ref={svgRef}>
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
+    </div>
   )
 }
 

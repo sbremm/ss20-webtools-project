@@ -71,11 +71,13 @@ const ScatterPlot = ({ data, setData }) => {
   }, [data, setData]);
 
   return (
-    <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
-      <g className="x-axis" />
-      <g className="y-axis" />
-    </svg>
-
+    <div id="scatterPlot">
+      <h3>Scatter Plot</h3>
+      <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
+    </div>
   )
 }
 

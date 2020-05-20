@@ -30,17 +30,36 @@ function App() {
 
   return (
     <React.Fragment>
-      <h1>Webtools für die Lehre</h1>
+      <div id="header">
+        <h1>Webtools für die Lehre</h1>
+        <h2>Principal Component Analysis (PCA)</h2>
+      </div>
+      <div id="buttons">
+        <h3>Menu</h3>
+        <button onClick={generateRandomScatterPlot}>
+          Generate random data
+        </button><br />
+        <button onClick={() => setData([])}>
+          Clear data
+        </button>
+      </div>
       <ScatterPlot data={data} setData={setData} />
-      <br />
-      <button onClick={generateRandomScatterPlot}>
-        Generate random data
-      </button>
-      <button onClick={() => setData([])}>
-        Clear data
-      </button>
-      <br />
       <PrincipalComponentsChart principalComponents={principalComponents} />
+      <div id="dataTable">
+        <h3>Data</h3>
+        <table>
+          <tr>
+            <th>X</th>
+            <th>Y</th>
+          </tr>
+          {data.map(value =>
+            <tr>
+              <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
+              <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
+            </tr>
+          )}
+        </table>
+      </div>
     </React.Fragment>
   );
 }
