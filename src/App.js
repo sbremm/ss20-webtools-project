@@ -31,7 +31,7 @@ function App() {
   return (
     <React.Fragment>
       <h1>Webtools für die Lehre</h1>
-      <ScatterPlot data={data} />
+      <ScatterPlot data={data} setData={setData} />
       <br />
       <button onClick={generateRandomScatterPlot}>
         Generate random data

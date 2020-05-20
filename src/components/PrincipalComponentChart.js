@@ -42,7 +42,6 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .attr('width', xScale.bandwidth())
       .transition()
       .attr('height', value => 150 - yScale(value))
-    console.log([principalComponents])
   }, [principalComponents])
 
   return (

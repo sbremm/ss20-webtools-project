@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import { axisBottom, axisRight, scaleLinear, select } from "d3";
+import { axisBottom, axisRight, scaleLinear, select, mouse } from "d3";
 
-const ScatterPlot = ({ data }) => {
+const ScatterPlot = ({ data, setData }) => {
   const svgRef = useRef();
 
   // this executes on page load and every time the data changes
@@ -44,7 +44,16 @@ const ScatterPlot = ({ data }) => {
       .transition()
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
-  }, [data]);
+
+    svg.on('click', () => {
+      const mousePosition = mouse(svgRef.current)
+      const newDataPoint = [
+        xScale.invert(mousePosition[0]),
+        yScale.invert(mousePosition[1]),
+      ]
+      setData(data.concat([newDataPoint]))
+    })
+  }, [data, setData]);
 
   return (
     <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
