@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ee7b25ca1d57ae36e7928288aa65e4f7",
+    "revision": "c3560c4f3eb8dda83866981dbc56de85",
     "url": "/ss20-webtools-projekt/index.html"
   },
   {
-    "revision": "85bda1753fb51b8d5c69",
+    "revision": "3dce23eaf203957554dd",
     "url": "/ss20-webtools-projekt/static/css/main.2d8dee31.chunk.css"
   },
   {
-    "revision": "7aa443aff4c8196d6119",
-    "url": "/ss20-webtools-projekt/static/js/2.9181b189.chunk.js"
+    "revision": "f1353f86ba7c79af753e",
+    "url": "/ss20-webtools-projekt/static/js/2.071eabc0.chunk.js"
   },
   {
     "revision": "596e4823497e45004d2db4c50beba3f3",
-    "url": "/ss20-webtools-projekt/static/js/2.9181b189.chunk.js.LICENSE.txt"
+    "url": "/ss20-webtools-projekt/static/js/2.071eabc0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "85bda1753fb51b8d5c69",
-    "url": "/ss20-webtools-projekt/static/js/main.456ad818.chunk.js"
+    "revision": "3dce23eaf203957554dd",
+    "url": "/ss20-webtools-projekt/static/js/main.eeae758b.chunk.js"
   },
   {
     "revision": "156ef26e8475cdfad8c1",
