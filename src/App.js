@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import PCA from 'pca-js'
+import DataTable from './components/DataTable'
 import ScatterPlot from './components/ScatterPlot'
 import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
@@ -45,21 +46,7 @@ function App() {
       </div>
       <ScatterPlot data={data} setData={setData} />
       <PrincipalComponentsChart principalComponents={principalComponents} />
-      <div id="dataTable">
-        <h3>Data</h3>
-        <table>
-          <tr>
-            <th>X</th>
-            <th>Y</th>
-          </tr>
-          {data.map(value =>
-            <tr>
-              <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
-              <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
-            </tr>
-          )}
-        </table>
-      </div>
+      <DataTable data={data} />
     </React.Fragment>
   );
 }
