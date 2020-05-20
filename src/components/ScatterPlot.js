@@ -8,10 +8,16 @@ const ScatterPlot = ({ data, setData }) => {
   useEffect(() => {
     const svg = select(svgRef.current);
 
-    const maxX = Math.max(...data.map(value => value[0]))
-    const maxY = Math.max(...data.map(value => value[1]))
-    const minX = Math.min(...data.map(value => value[0]))
-    const minY = Math.min(...data.map(value => value[1]))
+    let maxX = 5
+    let maxY = 5
+    let minX = -5
+    let minY = -5
+    if (data.length > 0) {
+      maxX = Math.max(...data.map(value => value[0])) + 5
+      maxY = Math.max(...data.map(value => value[1])) + 5
+      minX = Math.min(...data.map(value => value[0])) - 5
+      minY = Math.min(...data.map(value => value[1])) - 5
+    }
 
     const xScale = scaleLinear()
       .domain([minX, maxX])
