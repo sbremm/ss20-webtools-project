@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { axisBottom, axisRight, scaleLinear, select, mouse } from "d3";
+import { axisBottom, axisRight, scaleLinear, select, mouse, event } from "d3";
 
 const ScatterPlot = ({ data, setData }) => {
   const svgRef = useRef();
@@ -44,6 +44,15 @@ const ScatterPlot = ({ data, setData }) => {
       .transition()
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
+
+    svg
+      .selectAll(".dataPoint")
+      .on('click', (_value, index) => {
+        event.stopPropagation() // prevents that the same click also adds a data point
+        const newData = data.slice()
+        newData.splice(index, 1)
+        setData(newData)
+      })
 
     svg.on('click', () => {
       const mousePosition = mouse(svgRef.current)
