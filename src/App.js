@@ -5,8 +5,8 @@ import ScatterPlot from './components/ScatterPlot'
 import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
 function App() {
-  const [data, setData] = useState([[0, 0]]);
-  const [principalComponents, setPrincipalComponents] = useState([0, 0])
+  const [data, setData] = useState([]);
+  const [principalComponents, setPrincipalComponents] = useState([])
 
   const generateRandomScatterPlot = () => {
     let newData = []
@@ -20,6 +20,10 @@ function App() {
   }
 
   useEffect(() => {
+    if (data.length === 0) {
+      setPrincipalComponents([])
+      return
+    }
     const vectors = PCA.getEigenVectors(data)
     setPrincipalComponents(vectors.map(vector => vector.eigenvalue))
   }, [data])
@@ -30,7 +34,10 @@ function App() {
       <ScatterPlot data={data} />
       <br />
       <button onClick={generateRandomScatterPlot}>
-        Generate random scatter plot
+        Generate random data
+      </button>
+      <button onClick={() => setData([])}>
+        Clear data
       </button>
       <br />
       <PrincipalComponentsChart principalComponents={principalComponents} />
