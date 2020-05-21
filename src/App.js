@@ -26,7 +26,7 @@ function App() {
       return
     }
     const vectors = PCA.getEigenVectors(data)
-    setPrincipalComponents(vectors.map(vector => vector.eigenvalue))
+    setPrincipalComponents(vectors)
   }, [data])
 
   return (

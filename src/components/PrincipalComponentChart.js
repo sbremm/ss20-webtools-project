@@ -4,13 +4,15 @@ import { select, axisBottom, axisRight, scaleLinear, scaleBand } from 'd3'
 const PrincipalComponentChart = ({ principalComponents }) => {
   const svgRef = useRef()
 
+  const eigenvalues = principalComponents.map(vector => vector.eigenvalue)
+
   useEffect(() => {
     const svg = select(svgRef.current)
 
-    const maxY = Math.max(...principalComponents)
+    const maxY = Math.max(...eigenvalues)
 
     const xScale = scaleBand()
-      .domain(principalComponents.map((value, index) => index))
+      .domain(eigenvalues.map((value, index) => index))
       .range([0, 300])
       .padding(0.5);
 
@@ -18,7 +20,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .domain([0, maxY])
       .range([150, 0]);
 
-    const xAxis = axisBottom(xScale).ticks(principalComponents.length);
+    const xAxis = axisBottom(xScale).ticks(eigenvalues.length);
     svg
       .select('.x-axis')
       .style('transform', 'translateY(150px)')
@@ -33,7 +35,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
 
     svg
       .selectAll('.bar')
-      .data(principalComponents)
+      .data(eigenvalues)
       .join('rect')
       .attr('class', 'bar')
       .style("transform", "scale(1, -1)")
@@ -42,7 +44,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .attr('width', xScale.bandwidth())
       .transition()
       .attr('height', value => 150 - yScale(value))
-  }, [principalComponents])
+  }, [principalComponents, eigenvalues])
 
   return (
     <div id="principalComponents">
