@@ -23,11 +23,13 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
     // create scales that map our data to the fixed size screen space
     const xScale = scaleLinear()
       .domain([minX, maxX])
-      .range([0, 600]);
+      .range([0, 600])
+      .nice()
 
     const yScale = scaleLinear()
       .domain([minY, maxY])
-      .range([0, 600]);
+      .range([0, 600])
+      .nice()
 
     // draw X and Y axis
     const xAxis = axisBottom(xScale)
