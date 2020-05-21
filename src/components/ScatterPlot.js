@@ -85,10 +85,10 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .attr("stroke-width", 2)
       .attr("stroke", (_value, index) => componentColorer(index))
       .transition()
-      .attr("x1", component => xScale(minX * component.vector[0]))
-      .attr("y1", component => yScale(minY * component.vector[1]))
-      .attr("x2", component => xScale(maxX * component.vector[0]))
-      .attr("y2", component => yScale(maxY * component.vector[1]))
+      .attr("x1", component => xScale(xScale.domain()[0] * component.vector[0]))
+      .attr("y1", component => yScale(yScale.domain()[0] * component.vector[1]))
+      .attr("x2", component => xScale(xScale.domain()[1] * component.vector[0]))
+      .attr("y2", component => yScale(yScale.domain()[1] * component.vector[1]))
 
   }, [data, setData, principalComponents]);
 
