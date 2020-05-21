@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { axisBottom, axisRight, scaleLinear, select, mouse, event } from "d3";
+import componentColorer from '../utils/componentColorer'
 
 const ScatterPlot = ({ data, setData, principalComponents }) => {
   const svgRef = useRef();
@@ -80,7 +81,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .join("line")
       .attr("class", "component")
       .attr("stroke-width", 2)
-      .attr("stroke", "black")
+      .attr("stroke", (_value, index) => componentColorer(index))
       .transition()
       .attr("x1", component => xScale(minX * component.vector[0]))
       .attr("y1", component => yScale(minY * component.vector[1]))

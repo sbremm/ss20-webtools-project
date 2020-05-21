@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { select, axisBottom, axisRight, scaleLinear, scaleBand } from 'd3'
+import componentColorer from '../utils/componentColorer'
 
 const PrincipalComponentChart = ({ principalComponents }) => {
   const svgRef = useRef()
@@ -47,6 +48,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .attr('width', xScale.bandwidth())
       .transition()
       .attr('height', value => 150 - yScale(value))
+      .style("fill", (_value, index) => componentColorer(index))
   }, [principalComponents, eigenvalues])
 
   return (
