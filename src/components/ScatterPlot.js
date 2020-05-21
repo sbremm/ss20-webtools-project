@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { axisBottom, axisRight, scaleLinear, select, mouse, event } from "d3";
 
-const ScatterPlot = ({ data, setData }) => {
+const ScatterPlot = ({ data, setData, principalComponents }) => {
   const svgRef = useRef();
 
   // this executes on page load and every time the data changes
@@ -68,7 +68,22 @@ const ScatterPlot = ({ data, setData }) => {
       ]
       setData(data.concat([newDataPoint]))
     })
-  }, [data, setData]);
+
+    // draw principal component vectors
+    svg
+      .selectAll(".component")
+      .data(principalComponents)
+      .join("line")
+      .attr("class", "component")
+      .attr("stroke-width", 2)
+      .attr("stroke", "black")
+      .transition()
+      .attr("x1", component => xScale(minX * component.vector[0]))
+      .attr("y1", component => yScale(minY * component.vector[1]))
+      .attr("x2", component => xScale(maxX * component.vector[0]))
+      .attr("y2", component => yScale(maxY * component.vector[1]))
+
+  }, [data, setData, principalComponents]);
 
   return (
     <div id="scatterPlot">

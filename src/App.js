@@ -44,7 +44,7 @@ function App() {
           Clear data
         </button>
       </div>
-      <ScatterPlot data={data} setData={setData} />
+      <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
       <PrincipalComponentsChart principalComponents={principalComponents} />
       <DataTable data={data} />
     </React.Fragment>
