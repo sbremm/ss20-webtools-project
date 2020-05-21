@@ -5,18 +5,20 @@ const DataTable = ({ data }) => {
     <div id="dataTable">
       <h3>Data</h3>
       <table>
-        <tr>
-          <th>X</th>
-          <th>Y</th>
-        </tr>
-        {data.sort().map(value =>
+        <tbody>
           <tr>
-            <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
-            <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
+            <th>X</th>
+            <th>Y</th>
           </tr>
-        )}
+          {data.sort().map(value =>
+            <tr key={value}>
+              <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
+              <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
+            </tr>
+          )}
+        </tbody>
       </table>
-    </div>
+    </div >
   )
 
 }
