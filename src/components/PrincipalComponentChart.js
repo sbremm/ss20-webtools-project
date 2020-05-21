@@ -11,6 +11,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
 
     const maxY = Math.max(...eigenvalues)
 
+    // create scales
     const xScale = scaleBand()
       .domain(eigenvalues.map((value, index) => index))
       .range([0, 300])
@@ -20,6 +21,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .domain([0, maxY])
       .range([150, 0]);
 
+    // draw Y axis and bar numbers
     const xAxis = axisBottom(xScale).ticks(eigenvalues.length);
     svg
       .select('.x-axis')
@@ -33,6 +35,7 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .transition()
       .call(yAxis);
 
+    // draw bars
     svg
       .selectAll('.bar')
       .data(eigenvalues)

@@ -19,6 +19,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       minY = Math.min(...data.map(value => value[1])) - 5
     }
 
+    // create scales that map our data to the fixed size screen space
     const xScale = scaleLinear()
       .domain([minX, maxX])
       .range([0, 600]);
@@ -27,6 +28,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .domain([minY, maxY])
       .range([0, 600]);
 
+    // draw X and Y axis
     const xAxis = axisBottom(xScale)
     svg
       .select(".x-axis")
@@ -41,6 +43,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .transition()
       .call(yAxis);
 
+    // draw data points
     svg
       .selectAll(".dataPoint")
       .data(data)
@@ -51,6 +54,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .attr("cx", value => xScale(value[0]))
       .attr("cy", value => yScale(value[1]))
 
+    // data points are deleted on click
     svg
       .selectAll(".dataPoint")
       .on('click', (_value, index) => {
