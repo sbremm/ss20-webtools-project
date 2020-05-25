@@ -50,9 +50,9 @@ const AdjustedData = ({ data, principalComponents, n }) => {
       .attr("r", 3)
       .style("fill", () => componentColorer(Number(n - 1)))
       .style("stroke", 'black')
+      .attr("cy", 25)
       .transition()
       .attr("cx", value => xScale(value))
-      .attr("cy", 25)
   }, [data, principalComponents, n])
 
   return (
