@@ -37,12 +37,12 @@ function App() {
       </div>
       <div id="buttons">
         <h3>Menu</h3>
-        <button onClick={generateRandomScatterPlot}>
-          Generate random data
-        </button><br />
-        <button onClick={() => setData([])}>
-          Clear data
-        </button>
+        <button onClick={generateRandomScatterPlot}>Generate random data</button><br />
+        <button onClick={() => setData([])}>Clear data</button>
+        {data.length > 0 ?
+          <button onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</button> :
+          <button disabled>Center Data</button>
+        }
       </div>
       <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
       <PrincipalComponentsChart principalComponents={principalComponents} />
