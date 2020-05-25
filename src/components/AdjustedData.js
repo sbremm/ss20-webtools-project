@@ -8,8 +8,6 @@ const AdjustedData = ({ data, principalComponents, n }) => {
   const svgRef = useRef();
 
   useEffect(() => {
-    // if (data.length < 1) return
-
     const svg = select(svgRef.current);
 
     let adjustedData
@@ -25,8 +23,6 @@ const AdjustedData = ({ data, principalComponents, n }) => {
     const max = Math.max(...PCA.computeAdjustedData(data, principalComponents[0]).adjustedData[0], ...PCA.computeAdjustedData(data, principalComponents[1]).adjustedData[0])
 
     // create scales that map our data to the fixed size screen space
-    // const min = Math.min(...adjustedData)
-    // const max = Math.max(...adjustedData)
     const xScale = scaleLinear()
       .domain([min, max])
       .range([0, 300])
