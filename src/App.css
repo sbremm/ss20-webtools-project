@@ -10,7 +10,8 @@ svg {
   grid-template-rows: auto;
   grid-template-areas:
     "header header header header"
-    "buttons scatterplot principalcomponents datatable";
+    "buttons scatterplot principalcomponents datatable"
+    "buttons scatterplot singlecomponents datatable";
   justify-items: center;
 }
 
@@ -34,7 +35,12 @@ svg {
 
 #principalComponents {
   grid-area: principalcomponents;
-  margin: 10px;
+  margin: 10px 10px 0 10px;
+}
+
+#singleComponents {
+  grid-area: singlecomponents;
+  margin: 10px 10px 0 10px;
 }
 
 button {
