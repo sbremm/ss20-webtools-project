@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { axisBottom, axisRight, scaleLinear, select, mouse, event } from "d3";
+import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
 const ScatterPlot = ({ data, setData, principalComponents }) => {
@@ -75,7 +76,9 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
         xScale.invert(mousePosition[0]),
         yScale.invert(mousePosition[1]),
       ]
-      setData(data.concat([newDataPoint]))
+      const newData = data.concat([newDataPoint])
+      const centeredNewData = PCA.computeDeviationMatrix(newData)
+      setData(centeredNewData)
     })
 
     // draw principal component vectors
@@ -89,8 +92,8 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .attr("stroke", (_value, index) => componentColorer(index))
       .transition()
       .attr("x1", component => xScale(xScale.domain()[0] * component.vector[0]))
-      .attr("y1", component => yScale(yScale.domain()[0] * component.vector[1]))
       .attr("x2", component => xScale(xScale.domain()[1] * component.vector[0]))
+      .attr("y1", component => yScale(yScale.domain()[0] * component.vector[1]))
       .attr("y2", component => yScale(yScale.domain()[1] * component.vector[1]))
 
   }, [data, setData, principalComponents]);

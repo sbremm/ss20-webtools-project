@@ -7,7 +7,7 @@ import ScatterPlot from './components/ScatterPlot'
 import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([[0, 0]]);
   const [principalComponents, setPrincipalComponents] = useState([])
 
   const generateRandomScatterPlot = () => {
@@ -18,7 +18,8 @@ function App() {
         Math.random() * 1000 - 500,
       ]])
     }
-    setData(newData)
+    const centeredNewData = PCA.computeDeviationMatrix(newData)
+    setData(centeredNewData)
   }
 
   useEffect(() => {
@@ -40,10 +41,6 @@ function App() {
         <h3>Menu</h3>
         <button onClick={generateRandomScatterPlot}>Generate random data</button><br />
         <button onClick={() => setData([])}>Clear data</button>
-        {data.length > 0 ?
-          <button onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</button> :
-          <button disabled>Center Data</button>
-        }
       </div>
       <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
       <PrincipalComponentsChart principalComponents={principalComponents} />
