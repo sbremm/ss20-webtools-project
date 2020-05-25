@@ -48,6 +48,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
 
     // draw data points
     svg
+      .select(".data-points")
       .selectAll(".dataPoint")
       .data(data)
       .join("circle")
@@ -59,6 +60,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
 
     // data points are deleted on click
     svg
+      .select(".data-points")
       .selectAll(".dataPoint")
       .on('click', (_value, index) => {
         event.stopPropagation() // prevents that the same click also adds a data point
@@ -78,6 +80,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
 
     // draw principal component vectors
     svg
+      .select(".principal-components")
       .selectAll(".component")
       .data(principalComponents)
       .join("line")
@@ -98,6 +101,8 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
         <g className="x-axis" />
         <g className="y-axis" />
+        <g className="principal-components" />
+        <g className="data-points" />
       </svg>
     </div>
   )
