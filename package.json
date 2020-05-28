@@ -1,8 +1,8 @@
 {
-  "name": "ss20-webtools-projekt",
+  "name": "ss20-webtools-project",
   "version": "0.1.0",
-  "homepage": "https://orangefoil.github.io/ss20-webtools-projekt/",
-  "license" : "MIT" ,
+  "homepage": "https://orangefoil.github.io/ss20-webtools-project/",
+  "license": "MIT",
   "author": {
     "name": "Marcus Legendre",
     "email": "marcus.legendre@gmail.com"
