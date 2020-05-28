@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react'
-import { axisBottom, axisRight, scaleLinear, select, mouse, event } from "d3";
+import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
 const ScatterPlot = ({ data, setData, principalComponents }) => {
-  const svgRef = useRef();
+  const svgRef = useRef()
 
   // this executes on page load and every time the data changes
   useEffect(() => {
-    const svg = select(svgRef.current);
+    const svg = select(svgRef.current)
 
     let maxX = 5
     let maxY = 5
@@ -35,34 +35,34 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
     // draw X and Y axis
     const xAxis = axisBottom(xScale)
     svg
-      .select(".x-axis")
-      .style("transform", "translateY(600px)")
+      .select('.x-axis')
+      .style('transform', 'translateY(600px)')
       .transition()
-      .call(xAxis);
+      .call(xAxis)
 
-    const yAxis = axisRight(yScale);
+    const yAxis = axisRight(yScale)
     svg
-      .select(".y-axis")
-      .style("transform", "translateX(600px)")
+      .select('.y-axis')
+      .style('transform', 'translateX(600px)')
       .transition()
-      .call(yAxis);
+      .call(yAxis)
 
     // draw data points
     svg
-      .select(".data-points")
-      .selectAll(".dataPoint")
+      .select('.data-points')
+      .selectAll('.dataPoint')
       .data(data)
-      .join("circle")
-      .attr("class", "dataPoint")
-      .attr("r", 3)
+      .join('circle')
+      .attr('class', 'dataPoint')
+      .attr('r', 3)
       .transition()
-      .attr("cx", value => xScale(value[0]))
-      .attr("cy", value => yScale(value[1]))
+      .attr('cx', value => xScale(value[0]))
+      .attr('cy', value => yScale(value[1]))
 
     // data points are deleted on click
     svg
-      .select(".data-points")
-      .selectAll(".dataPoint")
+      .select('.data-points')
+      .selectAll('.dataPoint')
       .on('click', (_value, index) => {
         event.stopPropagation() // prevents that the same click also adds a data point
         const newData = data.slice()
@@ -83,20 +83,20 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
 
     // draw principal component vectors
     svg
-      .select(".principal-components")
-      .selectAll(".component")
+      .select('.principal-components')
+      .selectAll('.component')
       .data(principalComponents)
-      .join("line")
-      .attr("class", "component")
-      .attr("stroke-width", 2)
-      .attr("stroke", (_value, index) => componentColorer(index))
+      .join('line')
+      .attr('class', 'component')
+      .attr('stroke-width', 2)
+      .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr("x1", component => xScale(xScale.domain()[0] * component.vector[0]))
-      .attr("x2", component => xScale(xScale.domain()[1] * component.vector[0]))
-      .attr("y1", component => yScale(yScale.domain()[0] * component.vector[1]))
-      .attr("y2", component => yScale(yScale.domain()[1] * component.vector[1]))
+      .attr('x1', component => xScale(xScale.domain()[0] * component.vector[0]))
+      .attr('x2', component => xScale(xScale.domain()[1] * component.vector[0]))
+      .attr('y1', component => yScale(yScale.domain()[0] * component.vector[1]))
+      .attr('y2', component => yScale(yScale.domain()[1] * component.vector[1]))
 
-  }, [data, setData, principalComponents]);
+  }, [data, setData, principalComponents])
 
   return (
     <div id="scatterPlot">

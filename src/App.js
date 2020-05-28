@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import './App.css'
 import PCA from 'pca-js'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import ScatterPlot from './components/ScatterPlot'
 import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
-function App() {
-  const [data, setData] = useState([[0, 0]]);
+function App () {
+  const [data, setData] = useState([[0, 0]])
   const [principalComponents, setPrincipalComponents] = useState([])
 
   const generateRandomScatterPlot = () => {
@@ -39,7 +39,8 @@ function App() {
       </div>
       <div id="buttons">
         <h3>Menu</h3>
-        <button onClick={generateRandomScatterPlot}>Generate random data</button><br />
+        <button onClick={generateRandomScatterPlot}>Generate random data</button>
+        <br />
         <button onClick={() => setData([])}>Clear data</button>
       </div>
       <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
@@ -50,7 +51,7 @@ function App() {
       </div>
       <DataTable data={data} />
     </React.Fragment>
-  );
+  )
 }
 
-export default App;
+export default App

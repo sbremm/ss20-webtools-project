@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { select, axisBottom, axisRight, scaleLinear, scaleBand } from 'd3'
+import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 
 const PrincipalComponentChart = ({ principalComponents }) => {
@@ -16,25 +16,25 @@ const PrincipalComponentChart = ({ principalComponents }) => {
     const xScale = scaleBand()
       .domain(eigenvalues.map((value, index) => index))
       .range([0, 300])
-      .padding(0.5);
+      .padding(0.5)
 
     const yScale = scaleLinear()
       .domain([0, maxY])
-      .range([150, 0]);
+      .range([150, 0])
 
     // draw Y axis and bar numbers
-    const xAxis = axisBottom(xScale).ticks(eigenvalues.length);
+    const xAxis = axisBottom(xScale).ticks(eigenvalues.length)
     svg
       .select('.x-axis')
       .style('transform', 'translateY(150px)')
-      .call(xAxis);
+      .call(xAxis)
 
-    const yAxis = axisRight(yScale);
+    const yAxis = axisRight(yScale)
     svg
       .select('.y-axis')
       .style('transform', 'translateX(300px)')
       .transition()
-      .call(yAxis);
+      .call(yAxis)
 
     // draw bars
     svg
@@ -42,13 +42,13 @@ const PrincipalComponentChart = ({ principalComponents }) => {
       .data(eigenvalues)
       .join('rect')
       .attr('class', 'bar')
-      .style("transform", "scale(1, -1)")
+      .style('transform', 'scale(1, -1)')
       .attr('x', (value, index) => xScale(index))
       .attr('y', -150)
       .attr('width', xScale.bandwidth())
       .transition()
       .attr('height', value => 150 - yScale(value))
-      .style("fill", (_value, index) => componentColorer(index))
+      .style('fill', (_value, index) => componentColorer(index))
   }, [principalComponents, eigenvalues])
 
   return (

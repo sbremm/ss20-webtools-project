@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react'
-import { axisBottom, scaleLinear, select } from "d3";
+import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
-
 const AdjustedData = ({ data, principalComponents, n }) => {
-  const svgRef = useRef();
+  const svgRef = useRef()
 
   useEffect(() => {
-    const svg = select(svgRef.current);
+    const svg = select(svgRef.current)
 
     let adjustedData
     try {
@@ -32,23 +31,23 @@ const AdjustedData = ({ data, principalComponents, n }) => {
     // draw X axis
     const xAxis = axisBottom(xScale)
     svg
-      .select(".x-axis")
-      .style("transform", "translateY(25px)")
+      .select('.x-axis')
+      .style('transform', 'translateY(25px)')
       .transition()
-      .call(xAxis);
+      .call(xAxis)
 
     // draw data points
     svg
-      .selectAll(".dataPoint")
+      .selectAll('.dataPoint')
       .data(adjustedData)
-      .join("circle")
-      .attr("class", "dataPoint")
-      .attr("r", 3)
-      .style("fill", () => componentColorer(Number(n - 1)))
-      .style("stroke", 'black')
-      .attr("cy", 25)
+      .join('circle')
+      .attr('class', 'dataPoint')
+      .attr('r', 3)
+      .style('fill', () => componentColorer(Number(n - 1)))
+      .style('stroke', 'black')
+      .attr('cy', 25)
       .transition()
-      .attr("cx", value => xScale(value))
+      .attr('cx', value => xScale(value))
   }, [data, principalComponents, n])
 
   return (
