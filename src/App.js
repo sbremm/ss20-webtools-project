@@ -14,8 +14,8 @@ function App() {
     let newData = []
     for (let i = 0; i < 20; i++) {
       newData = newData.concat([[
-        Math.random() * 1000 - 500,
-        Math.random() * 1000 - 500,
+        Math.random() * 200 - 100,
+        Math.random() * 200 - 100,
       ]])
     }
     const centeredNewData = PCA.computeDeviationMatrix(newData)
