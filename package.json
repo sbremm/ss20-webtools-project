@@ -1,7 +1,12 @@
 {
-  "name": "random-scatter-plot",
+  "name": "ss20-webtools-projekt",
   "version": "0.1.0",
   "homepage": "https://orangefoil.github.io/ss20-webtools-projekt/",
+  "license" : "MIT" ,
+  "author": {
+    "name": "Marcus Legendre",
+    "email": "marcus.legendre@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "d3": "^5.12.0",
