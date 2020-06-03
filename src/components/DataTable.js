@@ -1,4 +1,13 @@
 import React from 'react'
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+  Paper,
+} from '@material-ui/core'
 
 const DataTable = ({ data, setData }) => {
   const handleDelete = (index) => {
@@ -31,21 +40,25 @@ const DataTable = ({ data, setData }) => {
   return (
     <div id="dataTable">
       <h3>Data</h3>
-      <table>
-        <tbody>
-        <tr>
-          <th>X</th>
-          <th>Y</th>
-        </tr>
-        {data.sort().map((value, index) =>
-          <tr key={index}>
-            <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
-            <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
-            <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>
-          </tr>
-        )}
-        </tbody>
-      </table>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>X</TableCell>
+              <TableCell>Y</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.sort().map((value, index) =>
+              <TableRow key={index}>
+                <TableCell>{Number.parseFloat(value[0]).toFixed(2)}</TableCell>
+                <TableCell>{Number.parseFloat(value[1]).toFixed(2)}</TableCell>
+                <TableCell><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <br />
       <b>Add data point</b>
       <form onSubmit={addDataPoint}>
