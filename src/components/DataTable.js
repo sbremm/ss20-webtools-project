@@ -8,6 +8,17 @@ const DataTable = ({ data, setData }) => {
     }
   }
 
+  const addDataPoint = (event) => {
+    event.preventDefault()
+    const x = Number(event.target.x.value)
+    const y = Number(event.target.y.value)
+    console.log(x, y)
+    setData(data.concat([[x, y]]))
+
+    event.target.x.value = ''
+    event.target.y.value = ''
+  }
+
   const deleteButtonStyle = {
     border: 'none',
     color: 'darkblue',
@@ -35,6 +46,13 @@ const DataTable = ({ data, setData }) => {
         )}
         </tbody>
       </table>
+      <br />
+      <b>Add data point</b>
+      <form onSubmit={addDataPoint}>
+        X: <input name="x" style={{width: '25px'}}/><br />
+        Y: <input name="y" style={{width: '25px'}}/><br />
+        <button style={{width: '75px'}}>Add</button>
+      </form>
     </div>
   )
 
