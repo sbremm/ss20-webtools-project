@@ -43,16 +43,20 @@ const AdjustedData = ({ data, principalComponents, n }) => {
       .join('circle')
       .attr('class', 'dataPoint')
       .attr('r', 3)
-      .style('fill', () => componentColorer(Number(n - 1)))
-      .style('stroke', 'black')
       .attr('cy', 25)
       .transition()
       .attr('cx', value => xScale(value))
   }, [data, principalComponents, n])
 
+  const headerStyle = {
+    textDecoration: 'underline',
+    textDecorationColor: componentColorer(Number(n - 1)),
+    textDecorationThickness: '.15em'
+  }
+
   return (
     <div>
-      <h3>Component {n}</h3>
+      <h3 style={headerStyle}>Component {n}</h3>
       <svg ref={svgRef} height="60">
         <g className="x-axis" />
       </svg>
