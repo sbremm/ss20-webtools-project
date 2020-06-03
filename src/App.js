@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './App.css'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 import PCA from 'pca-js'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
@@ -31,25 +34,62 @@ function App () {
     setPrincipalComponents(vectors)
   }, [data])
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }))
+  const classes = useStyles()
+
   return (
     <React.Fragment>
-      <div id="header">
-        <h1>Webtools für die Lehre</h1>
-        <h2>Principal Component Analysis (PCA)</h2>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Typography variant="h1" component="h1" gutterBottom>
+                Webtools für die Lehre
+              </Typography>
+              <Typography variant="h2" component="h1" gutterBottom>
+                Principal Component Analysis (PCA)
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={1}>
+            <Paper className={classes.paper}>
+              <Typography variant="h3" component="h1" gutterBottom>Menu</Typography>
+              <button onClick={generateRandomScatterPlot}>Generate random data</button>
+              <br />
+              <button onClick={() => setData([])}>Clear data</button>
+            </Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
+            </Paper>
+          </Grid>
+          <Grid item xs={4}>
+            <Paper className={classes.paper}>
+              <PrincipalComponentsChart principalComponents={principalComponents} />
+              <AdjustedData data={data} principalComponents={principalComponents} n="1" />
+              <AdjustedData data={data} principalComponents={principalComponents} n="2" />
+            </Paper>
+          </Grid>
+          <Grid item xs={1}>
+            <Paper className={classes.paper}>
+              <DataTable data={data} setData={setData} />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>Footer</Paper>
+          </Grid>
+        </Grid>
       </div>
-      <div id="buttons">
-        <h3>Menu</h3>
-        <button onClick={generateRandomScatterPlot}>Generate random data</button>
-        <br />
-        <button onClick={() => setData([])}>Clear data</button>
-      </div>
-      <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
-      <PrincipalComponentsChart principalComponents={principalComponents} />
-      <div id="singleComponents">
-        <AdjustedData data={data} principalComponents={principalComponents} n="1" />
-        <AdjustedData data={data} principalComponents={principalComponents} n="2" />
-      </div>
-      <DataTable data={data} setData={setData} />
     </React.Fragment>
   )
 }
