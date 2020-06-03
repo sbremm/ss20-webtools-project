@@ -88,13 +88,14 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .data(principalComponents)
       .join('line')
       .attr('class', 'component')
+      .attr('clip-path', 'url(#rect-clip)')
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr('x1', component => xScale(xScale.domain()[0] * component.vector[0]))
-      .attr('x2', component => xScale(xScale.domain()[1] * component.vector[0]))
-      .attr('y1', component => yScale(yScale.domain()[0] * component.vector[1]))
-      .attr('y2', component => yScale(yScale.domain()[1] * component.vector[1]))
+      .attr('x1', component => xScale(2*xScale.domain()[0] * component.vector[0]))
+      .attr('x2', component => xScale(2*xScale.domain()[1] * component.vector[0]))
+      .attr('y1', component => yScale(2*yScale.domain()[0] * component.vector[1]))
+      .attr('y2', component => yScale(2*yScale.domain()[1] * component.vector[1]))
 
   }, [data, setData, principalComponents])
 
@@ -102,6 +103,9 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
     <div id="scatterPlot">
       <h3>Scatter Plot</h3>
       <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
+        <clipPath id="rect-clip">
+          <rect x="0" y="0" width="600" height="600" />
+        </clipPath>
         <g className="x-axis" />
         <g className="y-axis" />
         <g className="principal-components" />
