@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import PCA from 'pca-js'
+import Header from './components/Header'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import ScatterPlot from './components/ScatterPlot'
@@ -54,14 +55,7 @@ function App () {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Typography variant="h1" component="h1" gutterBottom>
-                Webtools für die Lehre
-              </Typography>
-              <Typography variant="h2" component="h1" gutterBottom>
-                Principal Component Analysis (PCA)
-              </Typography>
-            </Paper>
+            <Header />
           </Grid>
           <Grid item xs={1}>
             <Paper className={classes.paper}>
