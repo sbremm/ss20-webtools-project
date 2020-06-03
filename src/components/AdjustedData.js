@@ -3,7 +3,7 @@ import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
-const AdjustedData = ({ data, principalComponents, n }) => {
+const AdjustedData = ({ data, principalComponents, highlightedIndex, setHighlightedIndex, n }) => {
   const svgRef = useRef()
 
   useEffect(() => {
@@ -44,9 +44,20 @@ const AdjustedData = ({ data, principalComponents, n }) => {
       .attr('class', 'dataPoint')
       .attr('r', 3)
       .attr('cy', 25)
+      .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
       .transition()
       .attr('cx', value => xScale(value))
-  }, [data, principalComponents, n])
+
+    // set highlighting on mouse over
+    svg
+      .selectAll('.dataPoint')
+      .on('mouseenter', (_value, index) => {
+        setHighlightedIndex(index)
+      })
+      .on('mouseleave', () => {
+        setHighlightedIndex(undefined)
+      })
+  }, [data, principalComponents, n, highlightedIndex, setHighlightedIndex])
 
   const headerStyle = {
     textDecoration: 'underline',

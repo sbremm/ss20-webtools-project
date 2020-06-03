@@ -8,6 +8,7 @@ import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
+  const [highlightedIndex, setHighlightedIndex] = useState(undefined)
   const [principalComponents, setPrincipalComponents] = useState([])
 
   const generateRandomScatterPlot = () => {
@@ -43,13 +44,13 @@ function App () {
         <br />
         <button onClick={() => setData([])}>Clear data</button>
       </div>
-      <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
+      <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} />
       <PrincipalComponentsChart principalComponents={principalComponents} />
       <div id="singleComponents">
-        <AdjustedData data={data} principalComponents={principalComponents} n="1" />
-        <AdjustedData data={data} principalComponents={principalComponents} n="2" />
+        <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="1" />
+        <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="2" />
       </div>
-      <DataTable data={data} setData={setData} />
+      <DataTable data={data} setData={setData} highlightedIndex={highlightedIndex} />
     </React.Fragment>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DataTable = ({ data, setData }) => {
+const DataTable = ({ data, setData, highlightedIndex }) => {
   const handleDelete = (index) => {
     return (event) => {
       event.preventDefault()
@@ -28,6 +28,10 @@ const DataTable = ({ data, setData }) => {
     padding: 0,
   }
 
+  const rowStyle = (index) => {
+    return index === highlightedIndex ? {color: 'red'} : {}
+  }
+
   return (
     <div id="dataTable">
       <h3>Data</h3>
@@ -38,7 +42,7 @@ const DataTable = ({ data, setData }) => {
           <th>Y</th>
         </tr>
         {data.sort().map((value, index) =>
-          <tr key={index}>
+          <tr key={index} style={rowStyle(index)}>
             <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
             <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
             <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>

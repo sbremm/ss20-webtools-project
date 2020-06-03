@@ -3,7 +3,7 @@ import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
-const ScatterPlot = ({ data, setData, principalComponents }) => {
+const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()
 
   // this executes on page load and every time the data changes
@@ -55,6 +55,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .join('circle')
       .attr('class', 'dataPoint')
       .attr('r', 3)
+      .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
       .transition()
       .attr('cx', value => xScale(value[0]))
       .attr('cy', value => yScale(value[1]))
@@ -70,6 +71,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
         setData(newData)
       })
 
+    // add data point on click
     svg.on('click', () => {
       const mousePosition = mouse(svgRef.current)
       const newDataPoint = [
@@ -80,6 +82,17 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       const centeredNewData = PCA.computeDeviationMatrix(newData)
       setData(centeredNewData)
     })
+
+    // set highlighting on mouse over
+    svg
+      .select('.data-points')
+      .selectAll('.dataPoint')
+      .on('mouseenter', (_value, index) => {
+        setHighlightedIndex(index)
+      })
+      .on('mouseleave', () => {
+        setHighlightedIndex(undefined)
+      })
 
     // draw principal component vectors
     svg
@@ -97,7 +110,7 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
       .attr('y1', component => yScale(2*yScale.domain()[0] * component.vector[1]))
       .attr('y2', component => yScale(2*yScale.domain()[1] * component.vector[1]))
 
-  }, [data, setData, principalComponents])
+  }, [data, setData, principalComponents, setHighlightedIndex, highlightedIndex])
 
   return (
     <div id="scatterPlot">
