@@ -49,7 +49,7 @@ function App () {
         <AdjustedData data={data} principalComponents={principalComponents} n="1" />
         <AdjustedData data={data} principalComponents={principalComponents} n="2" />
       </div>
-      <DataTable data={data} />
+      <DataTable data={data} setData={setData} />
     </React.Fragment>
   )
 }
