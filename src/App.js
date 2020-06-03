@@ -50,7 +50,7 @@ function App () {
         <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="1" />
         <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="2" />
       </div>
-      <DataTable data={data} setData={setData} highlightedIndex={highlightedIndex} />
+      <DataTable data={data} setData={setData} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} />
     </React.Fragment>
   )
 }
