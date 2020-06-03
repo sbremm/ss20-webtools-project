@@ -1,7 +1,21 @@
 import React, { useEffect, useRef } from 'react'
+import { Paper, Typography} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    minWidth: '650px', // does nothing
+  },
+  svg: {
+    backgroundColor: '#f5f5f6',
+    overflow: 'visible',
+  }
+}))
 
 const ScatterPlot = ({ data, setData, principalComponents }) => {
   const svgRef = useRef()
@@ -98,16 +112,17 @@ const ScatterPlot = ({ data, setData, principalComponents }) => {
 
   }, [data, setData, principalComponents])
 
+  const classes = useStyles()
   return (
-    <div id="scatterPlot">
-      <h3>Scatter Plot</h3>
-      <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
+    <Paper className={classes.paper}>
+      <Typography variant='h4'>Scatter Plot</Typography>
+      <svg ref={svgRef} className={classes.svg} width="600" height="600" viewBox="0 0 600 600">
         <g className="x-axis" />
         <g className="y-axis" />
-        <g className="principal-components" />
+        <g className="principal-components" style={{overflow: 'hidden'}}/>
         <g className="data-points" />
       </svg>
-    </div>
+    </Paper>
   )
 }
 

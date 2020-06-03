@@ -41,6 +41,7 @@ function App () {
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+      minWidth: '650px',
     },
     paper: {
       padding: theme.spacing(2),
@@ -65,9 +66,7 @@ function App () {
             </Paper>
           </Grid>
           <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
-            </Paper>
+            <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} />
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.paper}>
