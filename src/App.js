@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
   makeStyles,
+  Button,
   Grid,
   Paper,
   Typography,
@@ -64,10 +65,9 @@ function App () {
           </Grid>
           <Grid item xs={1}>
             <Paper className={classes.paper}>
-              <Typography variant="h3" component="h1" gutterBottom>Menu</Typography>
-              <button onClick={generateRandomScatterPlot}>Generate random data</button>
-              <br />
-              <button onClick={() => setData([])}>Clear data</button>
+              <Typography variant="h3" component="h1" gutterBottom>Actions</Typography>
+              <Button variant="contained" color="primary" onClick={generateRandomScatterPlot}>Generate random data</Button>
+              <Button variant="contained" color="secondary" onClick={() => setData([])}>Clear data</Button>
             </Paper>
           </Grid>
           <Grid item xs={6}>
