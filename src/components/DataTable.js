@@ -28,10 +28,6 @@ const DataTable = ({ data, setData, highlightedIndex }) => {
     padding: 0,
   }
 
-  const rowStyle = (index) => {
-    return index === highlightedIndex ? {color: 'red'} : {}
-  }
-
   return (
     <div id="dataTable">
       <h3>Data</h3>
@@ -42,7 +38,7 @@ const DataTable = ({ data, setData, highlightedIndex }) => {
           <th>Y</th>
         </tr>
         {data.sort().map((value, index) =>
-          <tr key={index} style={rowStyle(index)}>
+          <tr key={index} style={index === highlightedIndex ? {color: 'red'} : {}}>
             <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
             <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
             <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>
