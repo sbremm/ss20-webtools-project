@@ -59,9 +59,9 @@ function App () {
           </Grid>
           <Grid item xs={1}>
             <Paper className={classes.paper}>
-              <Typography variant="h3" component="h1" gutterBottom>Actions</Typography>
-              <Button variant="contained" color="primary" onClick={generateRandomScatterPlot}>Generate random data</Button>
-              <Button variant="contained" color="secondary" onClick={() => setData([])}>Clear data</Button>
+              <Typography variant='h4'>Actions</Typography>
+              <Button variant="contained" onClick={generateRandomScatterPlot}>Generate random data</Button><br/><br/>
+              <Button variant="contained" onClick={() => setData([])}>Clear data</Button>
             </Paper>
           </Grid>
           <Grid item xs={6}>
@@ -80,9 +80,6 @@ function App () {
             <Paper className={classes.paper}>
               <DataTable data={data} setData={setData} />
             </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>Footer</Paper>
           </Grid>
         </Grid>
       </div>

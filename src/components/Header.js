@@ -3,15 +3,22 @@ import {
   Paper,
   Typography,
 } from '@material-ui/core'
+import { makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor: theme.palette.primary.dark,
+    color: 'white',
+    textAlign: 'center',
+    paddingBottom: '1px'
+  }
+}))
 
 const Header = () => {
-  const style = {
-    backgroundColor: 'primary',
-    textAlign: 'center',
-  }
+  const classes = useStyles()
 
   return (
-    <Paper style={style} color="primary">
+    <Paper className={classes.paper} color="primary">
       <Typography variant="h1" component="h1" gutterBottom>
         Webtools für die Lehre
       </Typography>

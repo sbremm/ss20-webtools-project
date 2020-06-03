@@ -1,13 +1,15 @@
+import { orange, green, red, purple } from '@material-ui/core/colors'
+
 const componentColorer = (n) => {
   switch (n) {
     case 0:
-      return '#ff9e1b'
+      return orange['500']
     case 1:
-      return '#c4d52a'
+      return green['500']
     case 2:
-      return '#7c8034'
+      return red['500']
     default:
-      return '#cccccc'
+      return purple['500']
   }
 }
 
