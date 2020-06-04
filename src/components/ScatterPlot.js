@@ -105,10 +105,10 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr('x1', component => xScale(2*xScale.domain()[0] * component.vector[0]))
-      .attr('x2', component => xScale(2*xScale.domain()[1] * component.vector[0]))
-      .attr('y1', component => yScale(2*yScale.domain()[0] * component.vector[1]))
-      .attr('y2', component => yScale(2*yScale.domain()[1] * component.vector[1]))
+      .attr('x1', component => xScale(2 * xScale.domain()[0] * component.vector[0]))
+      .attr('x2', component => xScale(2 * xScale.domain()[1] * component.vector[0]))
+      .attr('y1', component => yScale(2 * yScale.domain()[0] * component.vector[1]))
+      .attr('y2', component => yScale(2 * yScale.domain()[1] * component.vector[1]))
 
   }, [data, setData, principalComponents, setHighlightedIndex, highlightedIndex])
 

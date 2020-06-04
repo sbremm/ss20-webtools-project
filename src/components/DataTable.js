@@ -12,7 +12,6 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
     event.preventDefault()
     const x = Number(event.target.x.value)
     const y = Number(event.target.y.value)
-    console.log(x, y)
     setData(data.concat([[x, y]]))
 
     event.target.x.value = ''
@@ -33,30 +32,30 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
       <h3>Data</h3>
       <table>
         <tbody>
-        <tr>
-          <th>X</th>
-          <th>Y</th>
-        </tr>
-        {data.sort().map((value, index) =>
-          <tr
-            key={index}
-            style={index === highlightedIndex ? {color: 'red'} : {}}
-            onMouseEnter={() => setHighlightedIndex(index)}
-            onMouseLeave={() => setHighlightedIndex(undefined)}
-          >
-            <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
-            <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
-            <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>
+          <tr>
+            <th>X</th>
+            <th>Y</th>
           </tr>
-        )}
+          {data.sort().map((value, index) =>
+            <tr
+              key={index}
+              style={index === highlightedIndex ? { color: 'red' } : {}}
+              onMouseEnter={() => setHighlightedIndex(index)}
+              onMouseLeave={() => setHighlightedIndex(undefined)}
+            >
+              <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
+              <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
+              <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>
+            </tr>
+          )}
         </tbody>
       </table>
       <br />
       <b>Add data point</b>
       <form onSubmit={addDataPoint}>
-        X: <input name="x" style={{width: '25px'}}/><br />
-        Y: <input name="y" style={{width: '25px'}}/><br />
-        <button style={{width: '75px'}}>Add</button>
+        X: <input name="x" style={{ width: '25px' }}/><br />
+        Y: <input name="y" style={{ width: '25px' }}/><br />
+        <button style={{ width: '75px' }}>Add</button>
       </form>
     </div>
   )

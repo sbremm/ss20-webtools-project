@@ -44,13 +44,33 @@ function App () {
         <br />
         <button onClick={() => setData([])}>Clear data</button>
       </div>
-      <ScatterPlot data={data} setData={setData} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} />
+      <ScatterPlot
+        data={data}
+        setData={setData}
+        principalComponents={principalComponents}
+        highlightedIndex={highlightedIndex}
+        setHighlightedIndex={setHighlightedIndex}
+      />
       <PrincipalComponentsChart principalComponents={principalComponents} />
       <div id="singleComponents">
-        <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="1" />
-        <AdjustedData data={data} principalComponents={principalComponents} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} n="2" />
+        <AdjustedData
+          data={data}
+          principalComponents={principalComponents}
+          highlightedIndex={highlightedIndex}
+          setHighlightedIndex={setHighlightedIndex}
+          n="1" />
+        <AdjustedData
+          data={data}
+          principalComponents={principalComponents}
+          highlightedIndex={highlightedIndex}
+          setHighlightedIndex={setHighlightedIndex}
+          n="2" />
       </div>
-      <DataTable data={data} setData={setData} highlightedIndex={highlightedIndex} setHighlightedIndex={setHighlightedIndex} />
+      <DataTable
+        data={data}
+        setData={setData}
+        highlightedIndex={highlightedIndex}
+        setHighlightedIndex={setHighlightedIndex} />
     </React.Fragment>
   )
 }
