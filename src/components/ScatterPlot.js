@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
+import mathHelper from '../utils/mathHelper'
 
 const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()
@@ -46,6 +47,45 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .style('transform', 'translateX(600px)')
       .transition()
       .call(yAxis)
+
+    // residues
+    if (principalComponents[1] && data.length > 1) {
+      // calculate intersections between residues and the principal component
+      const intersections = data.map(value => {
+        const componentGradientFunction = mathHelper.vectorToGradientFunction(
+          principalComponents[0].vector[0],
+          principalComponents[0].vector[1],
+          0,
+          0,
+        )
+        const residueGradientFunction = mathHelper.vectorToGradientFunction(
+          principalComponents[1].vector[0],
+          principalComponents[1].vector[1],
+          value[0],
+          value[1],
+        )
+        return mathHelper.lineIntersection(
+          componentGradientFunction.gradient,
+          componentGradientFunction.c,
+          residueGradientFunction.gradient,
+          residueGradientFunction.c,
+        )
+      })
+
+      // draw residues
+      svg
+        .selectAll('.residue')
+        .data(data)
+        .join('line')
+        .attr('class', 'residue')
+        .attr('stroke-width', 1)
+        .attr('stroke', 'red')
+        .transition()
+        .attr('x1', value => xScale(value[0]))
+        .attr('y1', value => yScale(value[1]))
+        .attr('x2', (_value, index) => xScale(intersections[index][0]))
+        .attr('y2', (_value, index) => xScale(intersections[index][1]))
+    }
 
     // draw data points
     svg
@@ -109,7 +149,6 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .attr('x2', component => xScale(2 * xScale.domain()[1] * component.vector[0]))
       .attr('y1', component => yScale(2 * yScale.domain()[0] * component.vector[1]))
       .attr('y2', component => yScale(2 * yScale.domain()[1] * component.vector[1]))
-
   }, [data, setData, principalComponents, setHighlightedIndex, highlightedIndex])
 
   return (
