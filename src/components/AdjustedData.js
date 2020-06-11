@@ -42,7 +42,7 @@ const AdjustedData = ({ data, principalComponents, highlightedIndex, setHighligh
       .data(adjustedData)
       .join('circle')
       .attr('class', 'dataPoint')
-      .attr('r', 3)
+      .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
       .attr('cy', 25)
       .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
       .transition()

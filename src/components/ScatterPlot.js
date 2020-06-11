@@ -54,7 +54,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .data(data)
       .join('circle')
       .attr('class', 'dataPoint')
-      .attr('r', 3)
+      .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
       .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
       .transition()
       .attr('cx', value => xScale(value[0]))
