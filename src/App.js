@@ -58,19 +58,22 @@ function App () {
           principalComponents={principalComponents}
           highlightedIndex={highlightedIndex}
           setHighlightedIndex={setHighlightedIndex}
-          n="1" />
+          n="1"
+        />
         <AdjustedData
           data={data}
           principalComponents={principalComponents}
           highlightedIndex={highlightedIndex}
           setHighlightedIndex={setHighlightedIndex}
-          n="2" />
+          n="2"
+        />
       </div>
       <DataTable
         data={data}
         setData={setData}
         highlightedIndex={highlightedIndex}
-        setHighlightedIndex={setHighlightedIndex} />
+        setHighlightedIndex={setHighlightedIndex}
+      />
     </React.Fragment>
   )
 }
