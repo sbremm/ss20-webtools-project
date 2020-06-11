@@ -19,8 +19,7 @@ function App () {
         Math.random() * 200 - 100,
       ]])
     }
-    const centeredNewData = PCA.computeDeviationMatrix(newData)
-    setData(centeredNewData)
+    setData(newData)
   }
 
   useEffect(() => {
@@ -42,7 +41,11 @@ function App () {
         <h3>Menu</h3>
         <button onClick={generateRandomScatterPlot}>Generate random data</button>
         <br />
-        <button onClick={() => setData([])}>Clear data</button>
+        <button onClick={() => setData([])}>Clear data</button><br />
+        {data.length > 0 ?
+          <button onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</button> :
+          <button disabled>Center Data</button>
+        }
       </div>
       <ScatterPlot
         data={data}

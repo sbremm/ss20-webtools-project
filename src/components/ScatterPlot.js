@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
-import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 
@@ -118,9 +117,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
         xScale.invert(mousePosition[0]),
         yScale.invert(mousePosition[1]),
       ]
-      const newData = data.concat([newDataPoint])
-      const centeredNewData = PCA.computeDeviationMatrix(newData)
-      setData(centeredNewData)
+      setData(data.concat([newDataPoint]))
     })
 
     // set highlighting on mouse over
