@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
+import HelpButton from './HelpButton'
 
 const svgWidth = 300
 const svgHeight = 150
@@ -57,8 +58,6 @@ const EigenvaluesChart = ({ principalComponents }) => {
 
   return (
     <Card>
-
-
       <Card.Header as="h3">
         Eigenvalues
       </Card.Header>
@@ -71,6 +70,7 @@ const EigenvaluesChart = ({ principalComponents }) => {
             <g className="y-axis" />
           </svg>
         </ResponsiveEmbed>
+        <HelpButton shorttext="The eigenvalues indicate the significance of the components relative to each other." />
       </Card.Body>
     </Card>
   )
