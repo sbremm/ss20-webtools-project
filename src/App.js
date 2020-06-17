@@ -9,7 +9,7 @@ import PCA from 'pca-js'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import ScatterPlot from './components/ScatterPlot'
-import PrincipalComponentsChart from './components/PrincipalComponentChart'
+import EigenvaluesChart from './components/EigenvaluesChart'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
@@ -72,7 +72,7 @@ function App () {
           />
         </Col>
         <Col lg="3">
-          <PrincipalComponentsChart principalComponents={principalComponents} />
+          <EigenvaluesChart principalComponents={principalComponents} />
           <div id="singleComponents">
             <AdjustedData
               data={data}

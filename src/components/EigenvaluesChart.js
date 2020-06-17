@@ -6,7 +6,7 @@ import componentColorer from '../utils/componentColorer'
 const svgWidth = 300
 const svgHeight = 150
 
-const PrincipalComponentChart = ({ principalComponents }) => {
+const EigenvaluesChart = ({ principalComponents }) => {
   const svgRef = useRef()
 
   const eigenvalues = principalComponents.map(vector => vector.eigenvalue)
@@ -57,8 +57,10 @@ const PrincipalComponentChart = ({ principalComponents }) => {
 
   return (
     <Card>
+
+
       <Card.Header as="h3">
-        Principal Components
+        Eigenvalues
       </Card.Header>
 
       <Card.Body>
@@ -74,4 +76,4 @@ const PrincipalComponentChart = ({ principalComponents }) => {
   )
 }
 
-export default PrincipalComponentChart
+export default EigenvaluesChart
