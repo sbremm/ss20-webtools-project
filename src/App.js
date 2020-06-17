@@ -44,7 +44,7 @@ function App () {
         <h2>Principal Component Analysis (PCA)</h2>
       </div>
       <Row>
-        <Col>
+        <Col xs="2">
           <h3>Menu</h3>
           <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
           <br />
@@ -54,7 +54,7 @@ function App () {
             <Button variant="outline-dark" block disabled>Center Data</Button>
           }
         </Col>
-        <Col>
+        <Col lg="5">
           <ScatterPlot
             data={data}
             setData={setData}
@@ -64,7 +64,7 @@ function App () {
             setHighlightedIndex={setHighlightedIndex}
           />
         </Col>
-        <Col>
+        <Col lg="3">
           <PrincipalComponentsChart principalComponents={principalComponents} />
           <div id="singleComponents">
             <AdjustedData
@@ -85,7 +85,7 @@ function App () {
             />
           </div>
         </Col>
-        <Col>
+        <Col lg="2">
           <DataTable
             data={data}
             setData={setData}

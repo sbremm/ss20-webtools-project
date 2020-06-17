@@ -1,4 +1,11 @@
 import React from 'react'
+import {
+  Button,
+  Col,
+  Form,
+  Row,
+  Table,
+} from 'react-bootstrap'
 
 const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => {
   const handleDelete = (index) => {
@@ -18,24 +25,19 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
     event.target.y.value = ''
   }
 
-  const deleteButtonStyle = {
-    border: 'none',
-    color: 'darkblue',
-    cursor: 'pointer',
-    display: 'inline',
-    margin: 0,
-    padding: 0,
-  }
-
   return (
-    <div id="dataTable">
+    <div>
       <h3>Data</h3>
-      <table>
-        <tbody>
+
+      <Table bordered hover size="sm">
+        <thead>
           <tr>
             <th>X</th>
             <th>Y</th>
+            <th>Delete</th>
           </tr>
+        </thead>
+        <tbody>
           {data.sort().map((value, index) =>
             <tr
               key={index}
@@ -45,18 +47,29 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
             >
               <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
               <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
-              <td><button style={deleteButtonStyle} onClick={handleDelete(index)}>[X]</button></td>
+              <td><Button variant="link" size="sm" onClick={handleDelete(index)}>[X]</Button></td>
             </tr>
           )}
         </tbody>
-      </table>
+      </Table>
       <br />
+
       <b>Add data point</b>
-      <form onSubmit={addDataPoint}>
-        X: <input name="x" style={{ width: '25px' }}/><br />
-        Y: <input name="y" style={{ width: '25px' }}/><br />
-        <button style={{ width: '75px' }}>Add</button>
-      </form>
+      <Form onSubmit={addDataPoint}>
+        <Form.Group as={Row}>
+          <Form.Label column sm="2">X</Form.Label>
+          <Col sm="10">
+            <Form.Control type="text" name="x" placeholder="0.00" />
+          </Col>
+          <Form.Label column sm="2">Y</Form.Label>
+          <Col sm="10">
+            <Form.Control type="text" name="y" placeholder="0.00" />
+          </Col>
+          <Col sm="12">
+            <Button variant="primary" block type="submit">Add</Button>
+          </Col>
+        </Form.Group>
+      </Form>
     </div>
   )
 
