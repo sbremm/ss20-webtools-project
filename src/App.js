@@ -52,8 +52,7 @@ function App () {
 
             <Card.Body>
               <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-              <br />
-              <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button><br />
+              <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button>
               {data.length > 0 ?
                 <Button variant="outline-dark" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
                 <Button variant="outline-dark" block disabled>Center Data</Button>
