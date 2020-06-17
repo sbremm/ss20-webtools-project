@@ -10,27 +10,21 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
   useEffect(() => {
     const svg = select(svgRef.current)
 
-    let maxX = 5
-    let maxY = 5
-    let minX = -5
-    let minY = -5
+    let domainMin = -5
+    let domainMax = 5
     if (data.length > 0) {
-      maxX = Math.max(...data.map(value => value[0])) + 5
-      maxY = Math.max(...data.map(value => value[1])) + 5
-      minX = Math.min(...data.map(value => value[0])) - 5
-      minY = Math.min(...data.map(value => value[1])) - 5
+      domainMin = Math.min(...data.map(value => value[0]), ...data.map(value => value[1])) - 5
+      domainMax = Math.max(...data.map(value => value[0]), ...data.map(value => value[1])) + 5
     }
-    const min = Math.min(minX, minY)
-    const max = Math.max(maxX, maxY)
 
     // create scales that map our data to the fixed size screen space
     const xScale = scaleLinear()
-      .domain([min, max])
+      .domain([domainMin, domainMax])
       .range([0, 600])
       .nice()
 
     const yScale = scaleLinear()
-      .domain([min, max])
+      .domain([domainMin, domainMax])
       .range([0, 600])
       .nice()
 
@@ -148,10 +142,10 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr('x1', component => xScale(2 * min * component.vector[0]))
-      .attr('y1', component => yScale(2 * min * component.vector[1]))
-      .attr('x2', component => xScale(2 * max * component.vector[0]))
-      .attr('y2', component => yScale(2 * max * component.vector[1]))
+      .attr('x1', component => xScale(2 * domainMin * component.vector[0]))
+      .attr('y1', component => yScale(2 * domainMin * component.vector[1]))
+      .attr('x2', component => xScale(2 * domainMax * component.vector[0]))
+      .attr('y2', component => yScale(2 * domainMax * component.vector[1]))
   }, [data, setData, principalComponents, setHighlightedIndex, highlightedIndex])
 
   return (
