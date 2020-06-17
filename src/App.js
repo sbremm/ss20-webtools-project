@@ -28,6 +28,12 @@ function App () {
     setData(newData)
   }
 
+  const reset = () => {
+    setData([])
+    setHighlightedComponent(null)
+    setHighlightedIndex(null)
+  }
+
   useEffect(() => {
     if (data.length === 0) {
       setPrincipalComponents([])
@@ -52,7 +58,7 @@ function App () {
 
             <Card.Body>
               <Button variant="secondary" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-              <Button variant="secondary" block onClick={() => setData([])}>Clear data</Button>
+              <Button variant="secondary" block onClick={() => reset()}>Clear data</Button>
               {data.length > 0 ?
                 <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
                 <Button variant="secondary" block disabled>Center Data</Button>
