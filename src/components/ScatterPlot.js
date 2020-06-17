@@ -149,7 +149,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
       .attr('y1', component => yScale(2 * domainMin * component.vector[1]))
       .attr('x2', component => xScale(2 * domainMax * component.vector[0]))
       .attr('y2', component => yScale(2 * domainMax * component.vector[1]))
-  }, [data, setData, principalComponents, highlightedComponent, highlightedIndex])
+  }, [data, setData, principalComponents, highlightedComponent, setHighlightedIndex, highlightedIndex])
 
   return (
     <div id="scatterPlot">
