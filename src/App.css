@@ -1,5 +1,21 @@
+body {
+  background-color: #f7f9fa;
+}
+
 svg {
   background: #eee;
   overflow: visible;
   margin-bottom: 2rem;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #e9eef2;
+}
+
+.card-body {
+  background-color: #fff;
 }
