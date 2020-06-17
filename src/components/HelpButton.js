@@ -1,8 +1,13 @@
-import React from 'react'
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 
-const HelpButton = ({ shorttext }) => {
+const HelpButton = ({ title, shorttext, longtext }) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
+
   return (
     <div className="float-right">
       <OverlayTrigger placement="left" overlay={
@@ -12,9 +17,21 @@ const HelpButton = ({ shorttext }) => {
         </Tooltip>
       }>
         <h5>
-          <Button variant="info" size="sm">Help</Button>
+          <Button variant="info" size="sm" onClick={handleShow}>Help</Button>
         </h5>
       </OverlayTrigger>
+
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{longtext}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

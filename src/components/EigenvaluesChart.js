@@ -70,7 +70,11 @@ const EigenvaluesChart = ({ principalComponents }) => {
             <g className="y-axis" />
           </svg>
         </ResponsiveEmbed>
-        <HelpButton shorttext="The eigenvalues indicate the significance of the components relative to each other." />
+        <HelpButton
+          title="Eigenvalues"
+          shorttext="The eigenvalues indicate the significance of the components relative to each other."
+          longtext="Lorem ipsum dolor sit amet."
+        />
       </Card.Body>
     </Card>
   )
