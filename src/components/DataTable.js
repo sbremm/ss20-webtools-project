@@ -69,7 +69,7 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
               <Form.Control type="text" name="y" placeholder="0.00" />
             </Col>
             <Col sm="12">
-              <Button variant="primary" block type="submit">Add</Button>
+              <Button variant="secondary" block type="submit">Add</Button>
             </Col>
           </Form.Group>
         </Form>

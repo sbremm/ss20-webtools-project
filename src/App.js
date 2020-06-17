@@ -51,11 +51,11 @@ function App () {
             </Card.Header>
 
             <Card.Body>
-              <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-              <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button>
+              <Button variant="secondary" block onClick={generateRandomScatterPlot}>Generate random data</Button>
+              <Button variant="secondary" block onClick={() => setData([])}>Clear data</Button>
               {data.length > 0 ?
-                <Button variant="outline-dark" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
-                <Button variant="outline-dark" block disabled>Center Data</Button>
+                <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
+                <Button variant="secondary" block disabled>Center Data</Button>
               }
             </Card.Body>
           </Card>
