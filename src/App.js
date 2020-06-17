@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
+import {
+  Button,
+  Row,
+  Col,
+} from 'react-bootstrap'
 import PCA from 'pca-js'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
@@ -33,55 +38,63 @@ function App () {
   }, [data])
 
   return (
-    <React.Fragment>
+    <div className='w-100 p-3'>
       <div id="header">
         <h1>Webtools für die Lehre</h1>
         <h2>Principal Component Analysis (PCA)</h2>
       </div>
-      <div id="buttons">
-        <h3>Menu</h3>
-        <button onClick={generateRandomScatterPlot}>Generate random data</button>
-        <br />
-        <button onClick={() => setData([])}>Clear data</button><br />
-        {data.length > 0 ?
-          <button onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</button> :
-          <button disabled>Center Data</button>
-        }
-      </div>
-      <ScatterPlot
-        data={data}
-        setData={setData}
-        principalComponents={principalComponents}
-        highlightedComponent={highlightedComponent}
-        highlightedIndex={highlightedIndex}
-        setHighlightedIndex={setHighlightedIndex}
-      />
-      <PrincipalComponentsChart principalComponents={principalComponents} />
-      <div id="singleComponents">
-        <AdjustedData
-          data={data}
-          principalComponents={principalComponents}
-          setHighlightedComponent={setHighlightedComponent}
-          highlightedIndex={highlightedIndex}
-          setHighlightedIndex={setHighlightedIndex}
-          n="1"
-        />
-        <AdjustedData
-          data={data}
-          principalComponents={principalComponents}
-          setHighlightedComponent={setHighlightedComponent}
-          highlightedIndex={highlightedIndex}
-          setHighlightedIndex={setHighlightedIndex}
-          n="2"
-        />
-      </div>
-      <DataTable
-        data={data}
-        setData={setData}
-        highlightedIndex={highlightedIndex}
-        setHighlightedIndex={setHighlightedIndex}
-      />
-    </React.Fragment>
+      <Row>
+        <Col>
+          <h3>Menu</h3>
+          <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
+          <br />
+          <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button><br />
+          {data.length > 0 ?
+            <Button variant="outline-dark" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
+            <Button variant="outline-dark" block disabled>Center Data</Button>
+          }
+        </Col>
+        <Col>
+          <ScatterPlot
+            data={data}
+            setData={setData}
+            principalComponents={principalComponents}
+            highlightedComponent={highlightedComponent}
+            highlightedIndex={highlightedIndex}
+            setHighlightedIndex={setHighlightedIndex}
+          />
+        </Col>
+        <Col>
+          <PrincipalComponentsChart principalComponents={principalComponents} />
+          <div id="singleComponents">
+            <AdjustedData
+              data={data}
+              principalComponents={principalComponents}
+              setHighlightedComponent={setHighlightedComponent}
+              highlightedIndex={highlightedIndex}
+              setHighlightedIndex={setHighlightedIndex}
+              n="1"
+            />
+            <AdjustedData
+              data={data}
+              principalComponents={principalComponents}
+              setHighlightedComponent={setHighlightedComponent}
+              highlightedIndex={highlightedIndex}
+              setHighlightedIndex={setHighlightedIndex}
+              n="2"
+            />
+          </div>
+        </Col>
+        <Col>
+          <DataTable
+            data={data}
+            setData={setData}
+            highlightedIndex={highlightedIndex}
+            setHighlightedIndex={setHighlightedIndex}
+          />
+        </Col>
+      </Row>
+    </div>
   )
 }
 

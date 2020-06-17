@@ -4,51 +4,8 @@ svg {
   margin-bottom: 2rem;
 }
 
-#root {
-  display: grid;
-  grid-template-columns: 200px auto auto auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header header header"
-    "buttons scatterplot principalcomponents datatable"
-    "buttons scatterplot singlecomponents datatable";
-  justify-items: center;
-}
-
 #header {
-  grid-area: header;
   width: 100%;
   background-color: #6c99bb;
   text-align: center;
-}
-
-#buttons {
-  grid-area: buttons;
-  margin: 10px;
-}
-
-#scatterPlot {
-  grid-area: scatterplot;
-  margin: 10px;
-  padding-right: 50px;
-}
-
-#principalComponents {
-  grid-area: principalcomponents;
-  margin: 10px 10px 0 10px;
-}
-
-#singleComponents {
-  grid-area: singlecomponents;
-  margin: 10px 10px 0 10px;
-}
-
-button {
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-#dataTable {
-  grid-area: datatable;
-  align-self: start;
 }
