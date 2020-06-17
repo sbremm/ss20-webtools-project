@@ -50,13 +50,13 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
     // residues
     if (principalComponents[1] && data.length > 1) {
       // calculate intersections between residues and the principal component
+      const componentGradientFunction = mathHelper.vectorToGradientFunction(
+        principalComponents[0].vector[0],
+        principalComponents[0].vector[1],
+        0,
+        0,
+      )
       const intersections = data.map(value => {
-        const componentGradientFunction = mathHelper.vectorToGradientFunction(
-          principalComponents[0].vector[0],
-          principalComponents[0].vector[1],
-          0,
-          0,
-        )
         const residueGradientFunction = mathHelper.vectorToGradientFunction(
           principalComponents[1].vector[0],
           principalComponents[1].vector[1],
