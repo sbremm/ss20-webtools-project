@@ -3,9 +3,8 @@ body {
 }
 
 svg {
-  background: #eee;
   overflow: visible;
-  margin-bottom: 2rem;
+  margin: 10px 0px 0px 10px;
 }
 
 .card {

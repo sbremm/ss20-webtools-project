@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
@@ -75,6 +75,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
         .data(data)
         .join('line')
         .attr('class', 'residue')
+        .attr('clip-path', 'url(#rect-clip)')
         .attr('stroke-width', 1)
         .attr('stroke', 'red')
         .attr('x1', value => xScale(value[0]))
@@ -159,15 +160,18 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
       </Card.Header>
 
       <Card.Body>
-        <svg ref={svgRef} width="600" height="600" viewBox="0 0 600 600">
-          <clipPath id="rect-clip">
-            <rect x="0" y="0" width="600" height="600" />
-          </clipPath>
-          <g className="x-axis" />
-          <g className="y-axis" />
-          <g className="principal-components" />
-          <g className="data-points" />
-        </svg>
+        <ResponsiveEmbed>
+          <svg ref={svgRef} width="600" height="600" viewBox="0 0 650 650">
+            <clipPath id="rect-clip">
+              <rect x="0" y="0" width="600" height="600" />
+            </clipPath>
+            <rect x="0" y="0" width="600" height="600" fill="#eee" />
+            <g className="x-axis" />
+            <g className="y-axis" />
+            <g className="principal-components" />
+            <g className="data-points" />
+          </svg>
+        </ResponsiveEmbed>
       </Card.Body>
     </Card>
   )

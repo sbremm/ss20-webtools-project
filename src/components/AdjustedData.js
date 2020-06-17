@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
+
+const svgWidth = 315
+const svgHeight = 135
 
 const AdjustedData = ({ data, principalComponents, setHighlightedComponent, highlightedIndex, setHighlightedIndex, n }) => {
   const svgRef = useRef()
@@ -25,7 +28,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
     // create scales that map our data to the fixed size screen space
     const xScale = scaleLinear()
       .domain([min, max])
-      .range([0, 300])
+      .range([0, svgWidth])
       .nice()
       .clamp(true)
 
@@ -33,7 +36,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
     const xAxis = axisBottom(xScale)
     svg
       .select('.x-axis')
-      .style('transform', 'translateY(25px)')
+      .style('transform', `translateY(${svgHeight / 2 - 5}px)`)
       .transition()
       .call(xAxis)
 
@@ -44,7 +47,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
       .join('circle')
       .attr('class', 'dataPoint')
       .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
-      .attr('cy', 25)
+      .attr('cy', svgHeight / 2 - 5)
       .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
       .transition()
       .attr('cx', value => xScale(value))
@@ -77,9 +80,12 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
         </Card.Header>
 
         <Card.Body>
-          <svg ref={svgRef} height="60">
-            <g className="x-axis" />
-          </svg>
+          <ResponsiveEmbed aspectRatio="21by9">
+            <svg ref={svgRef} width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+              <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
+              <g className="x-axis" />
+            </svg>
+          </ResponsiveEmbed>
         </Card.Body>
       </Card>
     </div>
