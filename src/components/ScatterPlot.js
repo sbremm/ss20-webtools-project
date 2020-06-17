@@ -83,7 +83,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
         .attr('x1', value => xScale(value[0]))
         .attr('y1', value => yScale(value[1]))
         .attr('x2', (_value, index) => xScale(intersections[index][0]))
-        .attr('y2', (_value, index) => xScale(intersections[index][1]))
+        .attr('y2', (_value, index) => yScale(intersections[index][1]))
     } else {
       svg
         .selectAll('.residue')
