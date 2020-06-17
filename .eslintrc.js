@@ -1,8 +1,7 @@
 module.exports = {
   'env': {
     'browser': true,
-    'es6': true,
-    "jest/globals": true
+    'es6': true
   },
   'extends': [
     'eslint:recommended',
@@ -16,7 +15,6 @@ module.exports = {
     'sourceType': 'module'
   },
   'plugins': [
-    "react", "jest"
   ],
   'rules': {
     'indent': [

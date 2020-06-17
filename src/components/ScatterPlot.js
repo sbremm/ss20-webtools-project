@@ -84,6 +84,10 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
         .attr('y1', value => yScale(value[1]))
         .attr('x2', (_value, index) => xScale(intersections[index][0]))
         .attr('y2', (_value, index) => xScale(intersections[index][1]))
+    } else {
+      svg
+        .selectAll('.residue')
+        .remove()
     }
 
     // draw data points
