@@ -3,6 +3,7 @@ import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
+import HelpButton from './HelpButton'
 
 const svgWidth = 315
 const svgHeight = 135
@@ -81,11 +82,16 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
 
         <Card.Body>
           <ResponsiveEmbed aspectRatio="21by9">
-            <svg ref={svgRef} width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+            <svg ref={svgRef} width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight + 30}`}>
               <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
               <g className="x-axis" />
             </svg>
           </ResponsiveEmbed>
+          <HelpButton
+            title={`Component ${n}`}
+            shorttext={`This is what the data looks like after reducing from two to one dimension using component #${n}`}
+            longtext="Lorem ipsum dolor sit amet."
+          />
         </Card.Body>
       </Card>
     </div>

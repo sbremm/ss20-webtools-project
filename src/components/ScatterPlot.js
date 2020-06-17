@@ -3,6 +3,7 @@ import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
+import HelpButton from './HelpButton'
 
 const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()
@@ -172,6 +173,11 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
             <g className="data-points" />
           </svg>
         </ResponsiveEmbed>
+        <HelpButton
+          title="Scatter plot with component vectors"
+          shorttext="Lorem ipsum."
+          longtext="Lorem ipsum dolor sit amet."
+        />
       </Card.Body>
     </Card>
   )
