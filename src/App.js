@@ -8,6 +8,7 @@ import PrincipalComponentsChart from './components/PrincipalComponentChart'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
+  const [highlightedComponent, setHighlightedComponent] = useState(null)
   const [highlightedIndex, setHighlightedIndex] = useState(undefined)
   const [principalComponents, setPrincipalComponents] = useState([])
 
@@ -51,6 +52,7 @@ function App () {
         data={data}
         setData={setData}
         principalComponents={principalComponents}
+        highlightedComponent={highlightedComponent}
         highlightedIndex={highlightedIndex}
         setHighlightedIndex={setHighlightedIndex}
       />
@@ -59,6 +61,7 @@ function App () {
         <AdjustedData
           data={data}
           principalComponents={principalComponents}
+          setHighlightedComponent={setHighlightedComponent}
           highlightedIndex={highlightedIndex}
           setHighlightedIndex={setHighlightedIndex}
           n="1"
@@ -66,6 +69,7 @@ function App () {
         <AdjustedData
           data={data}
           principalComponents={principalComponents}
+          setHighlightedComponent={setHighlightedComponent}
           highlightedIndex={highlightedIndex}
           setHighlightedIndex={setHighlightedIndex}
           n="2"

@@ -3,7 +3,7 @@ import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 
-const AdjustedData = ({ data, principalComponents, highlightedIndex, setHighlightedIndex, n }) => {
+const AdjustedData = ({ data, principalComponents, setHighlightedComponent, highlightedIndex, setHighlightedIndex, n }) => {
   const svgRef = useRef()
 
   useEffect(() => {
@@ -66,7 +66,10 @@ const AdjustedData = ({ data, principalComponents, highlightedIndex, setHighligh
   }
 
   return (
-    <div>
+    <div
+      onMouseEnter={() => setHighlightedComponent(n)}
+      onMouseLeave={() => setHighlightedComponent(null)}
+    >
       <h3 style={headerStyle}>Component {n}</h3>
       <svg ref={svgRef} height="60">
         <g className="x-axis" />
