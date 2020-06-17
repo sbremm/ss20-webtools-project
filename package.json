@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "d3": "^5.12.0",
+    "eslint-plugin-react": "^7.20.0",
     "mathjs": "^6.6.5",
     "pca-js": "^1.0.2",
     "react": "^16.10.2",
