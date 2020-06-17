@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Card } from 'react-bootstrap'
 import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
@@ -70,10 +71,17 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
       onMouseEnter={() => setHighlightedComponent(n)}
       onMouseLeave={() => setHighlightedComponent(null)}
     >
-      <h3 style={headerStyle}>Component {n}</h3>
-      <svg ref={svgRef} height="60">
-        <g className="x-axis" />
-      </svg>
+      <Card>
+        <Card.Header as="h3" style={headerStyle}>
+          Component {n}
+        </Card.Header>
+
+        <Card.Body>
+          <svg ref={svgRef} height="60">
+            <g className="x-axis" />
+          </svg>
+        </Card.Body>
+      </Card>
     </div>
   )
 }

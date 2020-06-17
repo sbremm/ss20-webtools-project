@@ -3,7 +3,7 @@ import './App.css'
 import {
   Button,
   Row,
-  Col,
+  Col, Card,
 } from 'react-bootstrap'
 import PCA from 'pca-js'
 import AdjustedData from './components/AdjustedData'
@@ -39,20 +39,27 @@ function App () {
 
   return (
     <div className='w-100 p-3'>
-      <div id="header">
+      <div className="bg-primary text-center">
         <h1>Webtools für die Lehre</h1>
         <h2>Principal Component Analysis (PCA)</h2>
       </div>
       <Row>
         <Col xs="2">
-          <h3>Menu</h3>
-          <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-          <br />
-          <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button><br />
-          {data.length > 0 ?
-            <Button variant="outline-dark" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
-            <Button variant="outline-dark" block disabled>Center Data</Button>
-          }
+          <Card>
+            <Card.Header as="h3">
+              Menu
+            </Card.Header>
+
+            <Card.Body>
+              <Button variant="outline-dark" block onClick={generateRandomScatterPlot}>Generate random data</Button>
+              <br />
+              <Button variant="outline-dark" block onClick={() => setData([])}>Clear data</Button><br />
+              {data.length > 0 ?
+                <Button variant="outline-dark" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
+                <Button variant="outline-dark" block disabled>Center Data</Button>
+              }
+            </Card.Body>
+          </Card>
         </Col>
         <Col lg="5">
           <ScatterPlot

@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   Button,
+  Card,
   Col,
   Form,
   Row,
@@ -26,53 +27,56 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
   }
 
   return (
-    <div>
-      <h3>Data</h3>
+    <Card>
+      <Card.Header as="h3">
+        Data
+      </Card.Header>
 
-      <Table bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>X</th>
-            <th>Y</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.sort().map((value, index) =>
-            <tr
-              key={index}
-              style={index === highlightedIndex ? { color: 'red' } : {}}
-              onMouseEnter={() => setHighlightedIndex(index)}
-              onMouseLeave={() => setHighlightedIndex(null)}
-            >
-              <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
-              <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
-              <td><Button variant="link" size="sm" onClick={handleDelete(index)}>[X]</Button></td>
+      <Card.Body>
+        <Table bordered hover size="sm">
+          <thead>
+            <tr>
+              <th>X</th>
+              <th>Y</th>
+              <th>Delete</th>
             </tr>
-          )}
-        </tbody>
-      </Table>
-      <br />
+          </thead>
+          <tbody>
+            {data.sort().map((value, index) =>
+              <tr
+                key={index}
+                style={index === highlightedIndex ? { color: 'red' } : {}}
+                onMouseEnter={() => setHighlightedIndex(index)}
+                onMouseLeave={() => setHighlightedIndex(null)}
+              >
+                <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
+                <td>{Number.parseFloat(value[1]).toFixed(2)}</td>
+                <td><Button variant="link" size="sm" onClick={handleDelete(index)}>[X]</Button></td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
 
-      <b>Add data point</b>
-      <Form onSubmit={addDataPoint}>
-        <Form.Group as={Row}>
-          <Form.Label column sm="2">X</Form.Label>
-          <Col sm="10">
-            <Form.Control type="text" name="x" placeholder="0.00" />
-          </Col>
-          <Form.Label column sm="2">Y</Form.Label>
-          <Col sm="10">
-            <Form.Control type="text" name="y" placeholder="0.00" />
-          </Col>
-          <Col sm="12">
-            <Button variant="primary" block type="submit">Add</Button>
-          </Col>
-        </Form.Group>
-      </Form>
-    </div>
+        <h5>Add data point</h5>
+        <Form onSubmit={addDataPoint}>
+          <Form.Group as={Row}>
+            <Form.Label column sm="2">X</Form.Label>
+            <Col sm="10">
+              <Form.Control type="text" name="x" placeholder="0.00" />
+            </Col>
+            <Form.Label column sm="2">Y</Form.Label>
+            <Col sm="10">
+              <Form.Control type="text" name="y" placeholder="0.00" />
+            </Col>
+            <Col sm="12">
+              <Button variant="primary" block type="submit">Add</Button>
+            </Col>
+          </Form.Group>
+        </Form>
+      </Card.Body>
+
+    </Card>
   )
-
 }
 
 export default DataTable

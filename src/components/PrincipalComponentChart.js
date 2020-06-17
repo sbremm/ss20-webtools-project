@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Card } from 'react-bootstrap'
 import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 
@@ -52,13 +53,18 @@ const PrincipalComponentChart = ({ principalComponents }) => {
   }, [principalComponents, eigenvalues])
 
   return (
-    <div id="principalComponents">
-      <h3>Principal Components</h3>
-      <svg ref={svgRef}>
-        <g className="x-axis" />
-        <g className="y-axis" />
-      </svg>
-    </div>
+    <Card>
+      <Card.Header as="h3">
+        Principal Components
+      </Card.Header>
+
+      <Card.Body>
+        <svg ref={svgRef}>
+          <g className="x-axis" />
+          <g className="y-axis" />
+        </svg>
+      </Card.Body>
+    </Card>
   )
 }
 
