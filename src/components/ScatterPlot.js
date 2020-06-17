@@ -20,15 +20,17 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       minX = Math.min(...data.map(value => value[0])) - 5
       minY = Math.min(...data.map(value => value[1])) - 5
     }
+    const min = Math.min(minX, minY)
+    const max = Math.max(maxX, maxY)
 
     // create scales that map our data to the fixed size screen space
     const xScale = scaleLinear()
-      .domain([minX, maxX])
+      .domain([min, max])
       .range([0, 600])
       .nice()
 
     const yScale = scaleLinear()
-      .domain([minY, maxY])
+      .domain([min, max])
       .range([0, 600])
       .nice()
 
@@ -146,10 +148,10 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr('x1', component => xScale(2 * Math.min(minX, minY) * component.vector[0]))
-      .attr('y1', component => yScale(2 * Math.min(minX, minY) * component.vector[1]))
-      .attr('x2', component => xScale(2 * Math.max(maxX, maxY) * component.vector[0]))
-      .attr('y2', component => yScale(2 * Math.max(maxX, maxY) * component.vector[1]))
+      .attr('x1', component => xScale(2 * min * component.vector[0]))
+      .attr('y1', component => yScale(2 * min * component.vector[1]))
+      .attr('x2', component => xScale(2 * max * component.vector[0]))
+      .attr('y2', component => yScale(2 * max * component.vector[1]))
   }, [data, setData, principalComponents, setHighlightedIndex, highlightedIndex])
 
   return (
