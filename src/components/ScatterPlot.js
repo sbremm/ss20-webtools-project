@@ -49,13 +49,13 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
 
     // residues
     if (principalComponents[1] && data.length > 1) {
-      // calculate intersections between residues and the principal component
       const componentGradientFunction = mathHelper.vectorToGradientFunction(
-        principalComponents[0].vector[0],
-        principalComponents[0].vector[1],
+        principalComponents[1].vector[0],
+        principalComponents[1].vector[1],
         0,
         0,
       )
+      // calculate intersections between residues and the principal component
       const intersections = data.map(value => {
         const residueGradientFunction = mathHelper.vectorToGradientFunction(
           principalComponents[1].vector[0],
@@ -64,7 +64,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedIndex, set
           value[1],
         )
         return mathHelper.lineIntersection(
-          componentGradientFunction.gradient,
+          -1 / componentGradientFunction.gradient, // orthogonal from gradient
           componentGradientFunction.c,
           residueGradientFunction.gradient,
           residueGradientFunction.c,
