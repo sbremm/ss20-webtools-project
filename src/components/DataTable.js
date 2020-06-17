@@ -41,7 +41,7 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
               key={index}
               style={index === highlightedIndex ? { color: 'red' } : {}}
               onMouseEnter={() => setHighlightedIndex(index)}
-              onMouseLeave={() => setHighlightedIndex(undefined)}
+              onMouseLeave={() => setHighlightedIndex(null)}
             >
               <td>{Number.parseFloat(value[0]).toFixed(2)}</td>
               <td>{Number.parseFloat(value[1]).toFixed(2)}</td>

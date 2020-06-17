@@ -9,7 +9,7 @@ import PrincipalComponentsChart from './components/PrincipalComponentChart'
 function App () {
   const [data, setData] = useState([[0, 0]])
   const [highlightedComponent, setHighlightedComponent] = useState(null)
-  const [highlightedIndex, setHighlightedIndex] = useState(undefined)
+  const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [principalComponents, setPrincipalComponents] = useState([])
 
   const generateRandomScatterPlot = () => {

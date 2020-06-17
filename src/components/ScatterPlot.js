@@ -131,7 +131,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
         setHighlightedIndex(index)
       })
       .on('mouseleave', () => {
-        setHighlightedIndex(undefined)
+        setHighlightedIndex(null)
       })
 
     // draw principal component vectors

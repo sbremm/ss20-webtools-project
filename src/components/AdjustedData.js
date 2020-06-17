@@ -55,7 +55,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
         setHighlightedIndex(index)
       })
       .on('mouseleave', () => {
-        setHighlightedIndex(undefined)
+        setHighlightedIndex(null)
       })
   }, [data, principalComponents, n, highlightedIndex, setHighlightedIndex])
 
