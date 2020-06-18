@@ -1,14 +1,21 @@
+import React from 'react'
+
 const examples = [
   {
-    'title': 'One',
-    'tooltip': 'This is the first example',
-    'description': 'This is not particularly interesting.',
-    'data': [[1,2], [2,1], [-1,-2], [-4,-3]]
+    'title': 'Cluster and outlier',
+    'tooltip': 'A cluster of 4 points and 1 outlier',
+    'description': (
+      <>
+        In this example you can see how an outlier can affect the PCA.<br />
+        Click on the outlier to remove it. You will see that the first component changes drastically.
+      </>
+    ),
+    'data': [[0,0], [-1,-1], [0,1], [-1,0], [16, 8]]
   },
   {
-    'title': 'Two',
-    'tooltip': 'This is the second example',
-    'description': 'Lorem ipsum dolor sit amet.',
+    'title': 'Boring',
+    'tooltip': 'This example is boring',
+    'description': 'There is nothing particularly interesting about this example.',
     'data': [[9,-7], [12,3], [-8,-8]]
   }
 ]
