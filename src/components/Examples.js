@@ -4,6 +4,17 @@ import examples from '../data/examples'
 
 const Examples = ({ setData }) => {
   const [activeExample, setActiveExample] = useState(null)
+  const [exampleStep, setExampleStep] = useState(0)
+
+  const nextExampleStep = () => {
+    setData(activeExample.steps[exampleStep + 1].data)
+    setExampleStep(exampleStep + 1)
+  }
+
+  const previousExampleStep = () => {
+    setData(activeExample.steps[exampleStep - 1].data)
+    setExampleStep(exampleStep - 1)
+  }
 
   return (
     <>
@@ -23,7 +34,7 @@ const Examples = ({ setData }) => {
                 block
                 onClick={() => {
                   setActiveExample(example)
-                  setData(example.data)
+                  setData(example.steps[exampleStep].data)
                 }}
               >
                 {example.title}
@@ -39,7 +50,22 @@ const Examples = ({ setData }) => {
               Example: {activeExample.title}
           </Card.Header>
           <Card.Body>
-            {activeExample.description}
+            {activeExample.steps[exampleStep].description}<br />
+            Step {exampleStep + 1} of {activeExample.steps.length}
+            <Button
+              variant="secondary"
+              disabled={exampleStep === 0}
+              onClick={() => previousExampleStep()}
+            >
+              Back
+            </Button>
+            <Button
+              variant="secondary"
+              disabled={exampleStep + 1 >= activeExample.steps.length}
+              onClick={() => nextExampleStep()}
+            >
+              Next
+            </Button>
           </Card.Body>
           <Card.Footer>
             <Button
@@ -47,6 +73,7 @@ const Examples = ({ setData }) => {
               block
               onClick={() => {
                 setActiveExample(null)
+                setExampleStep(0)
                 setData([])
               }}
             >
