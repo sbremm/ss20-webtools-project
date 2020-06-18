@@ -50,7 +50,7 @@ function App () {
         <h2>Principal Component Analysis (PCA)</h2>
       </div>
       <Row>
-        <Col xs="2" style={{ minWidth: '250px' }}>
+        <Col xs="2" style={{ minWidth: '300px' }}>
           <Card>
             <Card.Header as="h3">
               Menu
