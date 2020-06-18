@@ -30,16 +30,6 @@ const Examples = ({ setData }) => {
               </Button>
             </OverlayTrigger>
           )}
-          <Button
-            variant="outline-dark"
-            block
-            onClick={() => {
-              setActiveExample(null)
-              setData([])
-            }}
-          >
-            Reset
-          </Button>
         </Card.Body>
       </Card>
 
@@ -51,6 +41,18 @@ const Examples = ({ setData }) => {
           <Card.Body>
             {activeExample.description}
           </Card.Body>
+          <Card.Footer>
+            <Button
+              variant="outline-dark"
+              block
+              onClick={() => {
+                setActiveExample(null)
+                setData([])
+              }}
+            >
+              Close example
+            </Button>
+          </Card.Footer>
         </Card>
         :
         ''}
