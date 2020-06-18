@@ -10,6 +10,7 @@ import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
+import About from './components/About'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
@@ -51,6 +52,7 @@ function App () {
       </div>
       <Row>
         <Col xs="2" style={{ minWidth: '300px' }}>
+          <About />
           <Card>
             <Card.Header as="h3">
               Menu

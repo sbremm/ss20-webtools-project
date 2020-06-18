@@ -1,6 +1,11 @@
 import React from 'react'
 import { Image } from 'react-bootstrap'
 
+const About = {
+  'title': 'About',
+  'text': 'This text explains the purpose of this website.'
+}
+
 const AdjustedData = {
   'title': 'Component',
   'shortText': 'This is what the data looks like after reducing from two to one dimension',
@@ -33,6 +38,7 @@ const ScatterPlot = {
 }
 
 export default {
+  About,
   AdjustedData,
   EigenvaluesChart,
   ScatterPlot,
