@@ -3,6 +3,7 @@ import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
+import descriptions from '../data/descriptions.json'
 
 const svgWidth = 300
 const svgHeight = 150
@@ -71,9 +72,9 @@ const EigenvaluesChart = ({ principalComponents }) => {
           </svg>
         </ResponsiveEmbed>
         <HelpButton
-          title="Eigenvalues"
-          shorttext="The eigenvalues indicate the significance of the components relative to each other."
-          longtext="Lorem ipsum dolor sit amet."
+          title={descriptions.EigenvaluesChart.title}
+          shorttext={descriptions.EigenvaluesChart.shortText}
+          longtext={descriptions.EigenvaluesChart.longText}
         />
       </Card.Body>
     </Card>

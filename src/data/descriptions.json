@@ -1,0 +1,17 @@
+{
+  "AdjustedData": {
+    "title": "Component",
+    "shortText": "This is what the data looks like after reducing from two to one dimension",
+    "longText": "Lorem ipsum dolor sit amet. AdjustedData longText. TODO"
+  },
+  "EigenvaluesChart": {
+    "title": "Eigenvalues",
+    "shortText": "The eigenvalues indicate the significance of the components relative to each other.",
+    "longText": "Lorem ipsum dolor sit amet. EigenvaluesChart longText. TODO"
+  },
+  "ScatterPlot": {
+    "title": "Scatter plot with component vectors",
+    "shortText": "Lorem ipsum. ScatterPlot shortText. TODO",
+    "longText": "Lorem ipsum dolor sit amet. ScatterPlot longText. TODO"
+  }
+}

@@ -4,6 +4,7 @@ import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
+import descriptions from '../data/descriptions.json'
 
 const svgWidth = 315
 const svgHeight = 135
@@ -88,9 +89,9 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
             </svg>
           </ResponsiveEmbed>
           <HelpButton
-            title={`Component ${n}`}
-            shorttext={`This is what the data looks like after reducing from two to one dimension using component #${n}`}
-            longtext="Lorem ipsum dolor sit amet."
+            title={descriptions.AdjustedData.title}
+            shorttext={descriptions.AdjustedData.shortText}
+            longtext={descriptions.AdjustedData.longText}
           />
         </Card.Body>
       </Card>
