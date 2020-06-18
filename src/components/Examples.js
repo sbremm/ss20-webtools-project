@@ -34,7 +34,8 @@ const Examples = ({ setData }) => {
                 block
                 onClick={() => {
                   setActiveExample(example)
-                  setData(example.steps[exampleStep].data)
+                  setExampleStep(0)
+                  setData(example.steps[0].data)
                 }}
               >
                 {example.title}
