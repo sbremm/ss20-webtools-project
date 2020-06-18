@@ -4,7 +4,7 @@ import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
-import descriptions from '../data/descriptions'
+import Descriptions from '../data/descriptions'
 
 const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()
@@ -175,9 +175,9 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
           </svg>
         </ResponsiveEmbed>
         <HelpButton
-          title={descriptions.ScatterPlot.title}
-          shorttext={descriptions.ScatterPlot.shortText}
-          longtext={descriptions.ScatterPlot.longText}
+          title={Descriptions.ScatterPlot.title}
+          shorttext={Descriptions.ScatterPlot.shortText}
+          longtext={Descriptions.ScatterPlot.longText}
         />
       </Card.Body>
     </Card>
