@@ -6,11 +6,12 @@ import {
   Col, Card,
 } from 'react-bootstrap'
 import PCA from 'pca-js'
+import About from './components/About'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
+import Examples from './components/Examples'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
-import About from './components/About'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
@@ -67,6 +68,8 @@ function App () {
               }
             </Card.Body>
           </Card>
+
+          <Examples setData={setData} />
         </Col>
         <Col lg="5">
           <ScatterPlot
