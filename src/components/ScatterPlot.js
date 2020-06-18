@@ -4,7 +4,7 @@ import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
-import descriptions from '../data/descriptions.json'
+import descriptions from '../data/descriptions'
 
 const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()

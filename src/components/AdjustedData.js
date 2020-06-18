@@ -4,7 +4,7 @@ import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
-import descriptions from '../data/descriptions.json'
+import descriptions from '../data/descriptions'
 
 const svgWidth = 315
 const svgHeight = 135

@@ -36,4 +36,4 @@ const HelpButton = ({ title, shorttext, longtext }) => {
   )
 }
 
-export default  HelpButton
+export default HelpButton

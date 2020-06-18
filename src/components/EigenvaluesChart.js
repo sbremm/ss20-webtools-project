@@ -3,7 +3,7 @@ import { Card, ResponsiveEmbed } from 'react-bootstrap'
 import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
-import descriptions from '../data/descriptions.json'
+import descriptions from '../data/descriptions'
 
 const svgWidth = 300
 const svgHeight = 150
