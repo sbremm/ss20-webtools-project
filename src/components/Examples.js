@@ -44,7 +44,16 @@ const Examples = ({ setData }) => {
               </Button>
             </OverlayTrigger>
           )}
-
+          <Button
+            variant="outline-dark"
+            block
+            onClick={() => {
+              setActiveExample(null)
+              setData([])
+            }}
+          >
+            Reset
+          </Button>
         </Card.Body>
       </Card>
 
