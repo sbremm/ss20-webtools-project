@@ -48,7 +48,7 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
 
     // residues
     if (highlightedComponent && principalComponents[1] && data.length > 1) {
-      const n = highlightedComponent - 1
+      const n = highlightedComponent % 2
       const componentGradientFunction = mathHelper.vectorToGradientFunction(
         principalComponents[n].vector[0],
         principalComponents[n].vector[1],
