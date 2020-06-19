@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import {
-  Button,
-  Row,
-  Col, Card,
-} from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import PCA from 'pca-js'
 import About from './components/About'
+import ActionsMenu from './components/ActionsMenu'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
@@ -22,23 +19,6 @@ function App () {
   const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [principalComponents, setPrincipalComponents] = useState([])
   const [mean, setMean] = useState([0, 0])
-
-  const generateRandomScatterPlot = () => {
-    let newData = []
-    for (let i = 0; i < 20; i++) {
-      newData = newData.concat([[
-        Math.random() * 200 - 100,
-        Math.random() * 200 - 100,
-      ]])
-    }
-    setData(newData)
-  }
-
-  const reset = () => {
-    setData([])
-    setHighlightedComponent(null)
-    setHighlightedIndex(null)
-  }
 
   useEffect(() => {
     if (data.length === 0) {
@@ -56,21 +36,12 @@ function App () {
       <Row>
         <Col xs="2" style={{ minWidth: '300px' }}>
           <About />
-          <Card>
-            <Card.Header as="h3">
-              Menu
-            </Card.Header>
-
-            <Card.Body>
-              <Button variant="secondary" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-              <Button variant="secondary" block onClick={() => reset()}>Clear data</Button>
-              {data.length > 0 ?
-                <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
-                <Button variant="secondary" block disabled>Center Data</Button>
-              }
-            </Card.Body>
-          </Card>
-
+          <ActionsMenu
+            data={data}
+            setData={setData}
+            setHighlightedComponent={setHighlightedComponent}
+            setHighlightedIndex={setHighlightedIndex}
+          />
           <Examples setData={setData} />
         </Col>
         <Col lg="5">
