@@ -64,10 +64,14 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
             <Col sm="10">
               <Form.Control type="text" name="x" placeholder="0.00" />
             </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
             <Form.Label column sm="2">Y</Form.Label>
             <Col sm="10">
               <Form.Control type="text" name="y" placeholder="0.00" />
             </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
             <Col sm="12">
               <Button variant="secondary" block type="submit">Add</Button>
             </Col>
