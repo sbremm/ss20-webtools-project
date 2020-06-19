@@ -1,3 +1,12 @@
+// takes a two-dimensional array of data points and returns their mean
+const mean = data => {
+  const sum = [
+    data.map(value => value[0]).reduce((accumulator, value) => accumulator + value, 0),
+    data.map(value => value[1]).reduce((accumulator, value) => accumulator + value, 0)
+  ]
+  return sum.map(value => value / data.length)
+}
+
 // converts vector (a,b) with point (px,py) into a Steigungsfunktion
 const vectorToGradientFunction = (a, b, px, py) => {
   const gradient = b / a
@@ -17,6 +26,7 @@ const lineIntersection = (gradient1, c1, gradient2, c2) => {
 }
 
 export default {
+  mean,
   vectorToGradientFunction,
   lineIntersection,
 }

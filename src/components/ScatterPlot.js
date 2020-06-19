@@ -6,7 +6,7 @@ import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
 
-const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
+const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
   const svgRef = useRef()
 
   // this executes on page load and every time the data changes
@@ -149,10 +149,10 @@ const ScatterPlot = ({ data, setData, principalComponents, highlightedComponent,
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .attr('x1', component => xScale(2 * domainMin * component.vector[0]))
-      .attr('y1', component => yScale(2 * domainMin * component.vector[1]))
-      .attr('x2', component => xScale(2 * domainMax * component.vector[0]))
-      .attr('y2', component => yScale(2 * domainMax * component.vector[1]))
+      .attr('x1', component => xScale(2 * domainMin * component.vector[0] + mean[0]))
+      .attr('y1', component => yScale(2 * domainMin * component.vector[1] + mean[1]))
+      .attr('x2', component => xScale(2 * domainMax * component.vector[0] + mean[0]))
+      .attr('y2', component => yScale(2 * domainMax * component.vector[1] + mean[1]))
   }, [data, setData, principalComponents, highlightedComponent, setHighlightedIndex, highlightedIndex])
 
   return (

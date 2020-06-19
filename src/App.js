@@ -12,12 +12,14 @@ import DataTable from './components/DataTable'
 import Examples from './components/Examples'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
+import mathHelper from './utils/mathHelper'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
   const [highlightedComponent, setHighlightedComponent] = useState(null)
   const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [principalComponents, setPrincipalComponents] = useState([])
+  const [mean, setMean] = useState([0, 0])
 
   const generateRandomScatterPlot = () => {
     let newData = []
@@ -43,6 +45,7 @@ function App () {
     }
     const vectors = PCA.getEigenVectors(data)
     setPrincipalComponents(vectors)
+    setMean(mathHelper.mean(data))
   }, [data])
 
   return (
@@ -76,6 +79,7 @@ function App () {
             data={data}
             setData={setData}
             principalComponents={principalComponents}
+            mean={mean}
             highlightedComponent={highlightedComponent}
             highlightedIndex={highlightedIndex}
             setHighlightedIndex={setHighlightedIndex}
