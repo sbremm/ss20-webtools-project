@@ -97,14 +97,41 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
     svg
       .select('.data-points')
       .selectAll('.dataPoint')
-      .data(data)
-      .join('circle')
-      .attr('class', 'dataPoint')
-      .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
-      .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
-      .transition()
-      .attr('cx', value => xScale(value[0]))
-      .attr('cy', value => yScale(value[1]))
+      .data(data, d => [d[0], d[1]])
+      .join(
+        enter => {
+          enter.append('circle')
+            .attr('class', 'dataPoint')
+            .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
+            .attr('cx', value => xScale(value[0]))
+            .attr('cy', value => yScale(value[1]))
+            .attr('r', 10)
+            .attr('opacity', 0)
+            .call(enter => enter.transition()
+              .duration(500)
+              .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
+              .attr('opacity', 1)
+            )
+
+        },
+        update => {
+          update
+            .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
+            .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
+            .attr('cx', value => xScale(value[0]))
+            .attr('cy', value => yScale(value[1]))
+
+
+        },
+        exit => {
+          exit
+            .transition()
+            .attr('r', 10)
+            .attr('opacity', 0)
+            .remove()
+        }
+      )
+
 
     // data points are deleted on click
     svg
@@ -149,6 +176,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
+      .duration(750)
       .attr('x1', component => xScale(2 * domainMin * component.vector[0] + mean[0]))
       .attr('y1', component => yScale(2 * domainMin * component.vector[1] + mean[1]))
       .attr('x2', component => xScale(2 * domainMax * component.vector[0] + mean[0]))
