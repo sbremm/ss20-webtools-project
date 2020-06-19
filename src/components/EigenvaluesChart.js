@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Card, ResponsiveEmbed } from 'react-bootstrap'
-import { axisBottom, axisRight, scaleBand, scaleLinear, select } from 'd3'
+import { axisBottom, axisRight, easeSin, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
@@ -40,6 +40,8 @@ const EigenvaluesChart = ({ principalComponents }) => {
       .select('.y-axis')
       .style('transform', 'translateX(300px)')
       .transition()
+      .ease(easeSin)
+      .duration(500)
       .call(yAxis)
 
     // draw bars
@@ -53,6 +55,8 @@ const EigenvaluesChart = ({ principalComponents }) => {
       .attr('y', -svgHeight)
       .attr('width', xScale.bandwidth())
       .transition()
+      .ease(easeSin)
+      .duration(500)
       .attr('height', value => svgHeight - yScale(value))
       .style('fill', (_value, index) => componentColorer(index))
   }, [principalComponents, eigenvalues])

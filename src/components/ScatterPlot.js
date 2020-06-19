@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Card, ResponsiveEmbed } from 'react-bootstrap'
-import { axisBottom, axisRight, event, mouse, scaleLinear, select } from 'd3'
+import { axisBottom, axisRight, easePoly, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
@@ -105,7 +105,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
             .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
             .attr('cx', value => xScale(value[0]))
             .attr('cy', value => yScale(value[1]))
-            .attr('r', 10)
+            .attr('r', 6)
             .attr('opacity', 0)
             .call(enter => enter.transition()
               .duration(500)
@@ -126,8 +126,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
         exit => {
           exit
             .transition()
-            .attr('r', 10)
-            .attr('opacity', 0)
+            .attr('r', 0)
             .remove()
         }
       )
@@ -176,11 +175,12 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       .attr('stroke-width', 2)
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
-      .duration(750)
-      .attr('x1', component => xScale(2 * domainMin * component.vector[0]))
-      .attr('y1', component => yScale(2 * domainMin * component.vector[1]))
-      .attr('x2', component => xScale(2 * domainMax * component.vector[0]))
-      .attr('y2', component => yScale(2 * domainMax * component.vector[1]))
+      .ease(easePoly)
+      .duration(1000)
+      .attr('x1', component => xScale(3 * domainMin * component.vector[0]))
+      .attr('y1', component => yScale(3 * domainMin * component.vector[1]))
+      .attr('x2', component => xScale(3 * domainMax * component.vector[0]))
+      .attr('y2', component => yScale(3 * domainMax * component.vector[1]))
   }, [data, setData, principalComponents, mean, highlightedComponent, setHighlightedIndex, highlightedIndex])
 
   return (
