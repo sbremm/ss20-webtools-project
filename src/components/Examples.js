@@ -16,39 +16,13 @@ const Examples = ({ setData }) => {
     setExampleStep(exampleStep - 1)
   }
 
-  return (
-    <>
-      <Card>
-        <Card.Header as="h3">
-        Examples
-        </Card.Header>
-        <Card.Body>
-          {examples.map((example, index) =>
-            <OverlayTrigger key={index} placement="right" overlay={
-              <Tooltip id={'tooltip-right'}>
-                {example.tooltip}
-              </Tooltip>
-            }>
-              <Button
-                variant="secondary"
-                block
-                onClick={() => {
-                  setActiveExample(example)
-                  setExampleStep(0)
-                  setData(example.steps[0].data)
-                }}
-              >
-                {example.title}
-              </Button>
-            </OverlayTrigger>
-          )}
-        </Card.Body>
-      </Card>
-
-      {activeExample ?
+  const activeExampleCard = () => {
+    if (!activeExample) return ''
+    return (
+      (
         <Card>
           <Card.Header as="h3">
-              Example: {activeExample.title}
+            Example: {activeExample.title}
           </Card.Header>
           <Card.Body>
             {activeExample.steps[exampleStep].description}<br />
@@ -82,8 +56,39 @@ const Examples = ({ setData }) => {
             </Button>
           </Card.Footer>
         </Card>
-        :
-        ''}
+      )
+    )
+  }
+
+  return (
+    <>
+      <Card>
+        <Card.Header as="h3">
+        Examples
+        </Card.Header>
+        <Card.Body>
+          {examples.map((example, index) =>
+            <OverlayTrigger key={index} placement="right" overlay={
+              <Tooltip id={'tooltip-right'}>
+                {example.tooltip}
+              </Tooltip>
+            }>
+              <Button
+                variant="secondary"
+                block
+                onClick={() => {
+                  setActiveExample(example)
+                  setExampleStep(0)
+                  setData(example.steps[0].data)
+                }}
+              >
+                {example.title}
+              </Button>
+            </OverlayTrigger>
+          )}
+        </Card.Body>
+      </Card>
+      {activeExampleCard()}
     </>
   )
 }
