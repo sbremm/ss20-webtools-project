@@ -12,7 +12,7 @@ const examples = [
             Click next to remove the outlier.
           </>
         ),
-        'data': [[0,0], [-1,-1], [0,1], [-1,0], [16, 8]],
+        'data': [[0,0], [-1,-1], [0,1], [-1,0], [-5, 6]],
       },
       {
         'description': (
