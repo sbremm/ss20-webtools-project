@@ -177,10 +177,10 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       .attr('stroke', (_value, index) => componentColorer(index))
       .transition()
       .duration(750)
-      .attr('x1', component => xScale(2 * domainMin * component.vector[0] + mean[0]))
-      .attr('y1', component => yScale(2 * domainMin * component.vector[1] + mean[1]))
-      .attr('x2', component => xScale(2 * domainMax * component.vector[0] + mean[0]))
-      .attr('y2', component => yScale(2 * domainMax * component.vector[1] + mean[1]))
+      .attr('x1', component => xScale(2 * domainMin * component.vector[0]))
+      .attr('y1', component => yScale(2 * domainMin * component.vector[1]))
+      .attr('x2', component => xScale(2 * domainMax * component.vector[0]))
+      .attr('y2', component => yScale(2 * domainMax * component.vector[1]))
   }, [data, setData, principalComponents, mean, highlightedComponent, setHighlightedIndex, highlightedIndex])
 
   return (
