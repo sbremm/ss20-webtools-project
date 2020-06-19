@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Button, ButtonGroup, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import examples from '../data/examples'
 
 const Examples = ({ setData }) => {
@@ -16,8 +16,6 @@ const Examples = ({ setData }) => {
     setExampleStep(exampleStep - 1)
   }
 
-  const buttonStyle = { marginLeft: '.75em' }
-
   const activeExampleCard = () => {
     if (!activeExample) return ''
     return (
@@ -32,22 +30,22 @@ const Examples = ({ setData }) => {
               <>
                 <hr />
                 Step {exampleStep + 1} of {activeExample.steps.length}
-                <Button
-                  variant="secondary"
-                  style={buttonStyle}
-                  disabled={exampleStep === 0}
-                  onClick={() => previousExampleStep()}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="secondary"
-                  style={buttonStyle}
-                  disabled={exampleStep + 1 >= activeExample.steps.length}
-                  onClick={() => nextExampleStep()}
-                >
-                  Next
-                </Button>
+                <ButtonGroup className="float-right">
+                  <Button
+                    variant="secondary"
+                    disabled={exampleStep === 0}
+                    onClick={() => previousExampleStep()}
+                  >
+                    ⇦ Back
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    disabled={exampleStep + 1 >= activeExample.steps.length}
+                    onClick={() => nextExampleStep()}
+                  >
+                    Next ⇨
+                  </Button>
+                </ButtonGroup>
               </>
               :
               ''
