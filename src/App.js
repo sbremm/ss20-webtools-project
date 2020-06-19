@@ -10,6 +10,7 @@ import About from './components/About'
 import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
+import Footer from './components/Footer'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
 import mathHelper from './utils/mathHelper'
@@ -115,6 +116,7 @@ function App () {
           />
         </Col>
       </Row>
+      <Footer />
     </div>
   )
 }
