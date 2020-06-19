@@ -26,21 +26,28 @@ const Examples = ({ setData }) => {
           </Card.Header>
           <Card.Body>
             {activeExample.steps[exampleStep].description}<br />
-            Step {exampleStep + 1} of {activeExample.steps.length}
-            <Button
-              variant="secondary"
-              disabled={exampleStep === 0}
-              onClick={() => previousExampleStep()}
-            >
-              Back
-            </Button>
-            <Button
-              variant="secondary"
-              disabled={exampleStep + 1 >= activeExample.steps.length}
-              onClick={() => nextExampleStep()}
-            >
-              Next
-            </Button>
+            {activeExample.steps.length > 1 ?
+              <>
+                Step {exampleStep + 1} of {activeExample.steps.length}
+                <Button
+                  variant="secondary"
+                  disabled={exampleStep === 0}
+                  onClick={() => previousExampleStep()}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="secondary"
+                  disabled={exampleStep + 1 >= activeExample.steps.length}
+                  onClick={() => nextExampleStep()}
+                >
+                  Next
+                </Button>
+              </>
+              :
+              ''
+            }
+
           </Card.Body>
           <Card.Footer>
             <Button
