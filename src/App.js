@@ -11,6 +11,7 @@ import AdjustedData from './components/AdjustedData'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
 import Footer from './components/Footer'
+import Header from './components/Header'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
 import mathHelper from './utils/mathHelper'
@@ -51,10 +52,7 @@ function App () {
 
   return (
     <div className='w-100 p-3'>
-      <div className="bg-dark text-light text-center" style={{ padding: '1em', marginBottom: '1em' }}>
-        <h1>Webtools für die Lehre</h1>
-        <h2>Principal Component Analysis (PCA)</h2>
-      </div>
+      <Header />
       <Row>
         <Col xs="2" style={{ minWidth: '300px' }}>
           <About />
