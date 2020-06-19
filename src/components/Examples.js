@@ -16,6 +16,8 @@ const Examples = ({ setData }) => {
     setExampleStep(exampleStep - 1)
   }
 
+  const buttonStyle = { marginLeft: '.75em' }
+
   const activeExampleCard = () => {
     if (!activeExample) return ''
     return (
@@ -28,9 +30,11 @@ const Examples = ({ setData }) => {
             {activeExample.steps[exampleStep].description}<br />
             {activeExample.steps.length > 1 ?
               <>
+                <hr />
                 Step {exampleStep + 1} of {activeExample.steps.length}
                 <Button
                   variant="secondary"
+                  style={buttonStyle}
                   disabled={exampleStep === 0}
                   onClick={() => previousExampleStep()}
                 >
@@ -38,6 +42,7 @@ const Examples = ({ setData }) => {
                 </Button>
                 <Button
                   variant="secondary"
+                  style={buttonStyle}
                   disabled={exampleStep + 1 >= activeExample.steps.length}
                   onClick={() => nextExampleStep()}
                 >
