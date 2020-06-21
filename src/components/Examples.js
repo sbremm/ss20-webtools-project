@@ -1,74 +1,11 @@
 import React, { useState } from 'react'
-import { Button, ButtonGroup, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import examples from '../data/examples'
+import ActiveExample from './ActiveExample'
 
 const Examples = ({ setData }) => {
   const [activeExample, setActiveExample] = useState(null)
   const [exampleStep, setExampleStep] = useState(0)
-
-  const nextExampleStep = () => {
-    setData(activeExample.steps[exampleStep + 1].data)
-    setExampleStep(exampleStep + 1)
-  }
-
-  const previousExampleStep = () => {
-    setData(activeExample.steps[exampleStep - 1].data)
-    setExampleStep(exampleStep - 1)
-  }
-
-  const activeExampleCard = () => {
-    if (!activeExample) return ''
-    return (
-      (
-        <Card>
-          <Card.Header as="h3">
-            Example: {activeExample.title}
-          </Card.Header>
-          <Card.Body>
-            {activeExample.steps[exampleStep].description}<br />
-            {activeExample.steps.length > 1 ?
-              <>
-                <hr />
-                Step {exampleStep + 1} of {activeExample.steps.length}
-                <ButtonGroup className="float-right">
-                  <Button
-                    variant="secondary"
-                    disabled={exampleStep === 0}
-                    onClick={() => previousExampleStep()}
-                  >
-                    ⇦ Back
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    disabled={exampleStep + 1 >= activeExample.steps.length}
-                    onClick={() => nextExampleStep()}
-                  >
-                    Next ⇨
-                  </Button>
-                </ButtonGroup>
-              </>
-              :
-              ''
-            }
-
-          </Card.Body>
-          <Card.Footer>
-            <Button
-              variant="outline-dark"
-              block
-              onClick={() => {
-                setActiveExample(null)
-                setExampleStep(0)
-                setData([])
-              }}
-            >
-              Close example
-            </Button>
-          </Card.Footer>
-        </Card>
-      )
-    )
-  }
 
   return (
     <>
@@ -98,7 +35,13 @@ const Examples = ({ setData }) => {
           )}
         </Card.Body>
       </Card>
-      {activeExampleCard()}
+      <ActiveExample
+        activeExample={activeExample}
+        setActiveExample={setActiveExample}
+        exampleStep={exampleStep}
+        setExampleStep={setExampleStep}
+        setData={setData}
+      />
     </>
   )
 }
