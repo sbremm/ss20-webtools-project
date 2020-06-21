@@ -12,6 +12,7 @@ import Header from './components/Header'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
 import mathHelper from './utils/mathHelper'
+import ActiveExample from './components/ActiveExample'
 
 function App () {
   const [data, setData] = useState([[0, 0]])
@@ -19,6 +20,8 @@ function App () {
   const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [principalComponents, setPrincipalComponents] = useState([])
   const [mean, setMean] = useState([0, 0])
+  const [activeExample, setActiveExample] = useState(null)
+  const [exampleStep, setExampleStep] = useState(0)
 
   useEffect(() => {
     if (data.length === 0) {
@@ -42,7 +45,18 @@ function App () {
             setHighlightedComponent={setHighlightedComponent}
             setHighlightedIndex={setHighlightedIndex}
           />
-          <Examples setData={setData} />
+          <Examples
+            setActiveExample={setActiveExample}
+            setExampleStep={setExampleStep}
+            setData={setData}
+          />
+          <ActiveExample
+            activeExample={activeExample}
+            setActiveExample={setActiveExample}
+            exampleStep={exampleStep}
+            setExampleStep={setExampleStep}
+            setData={setData}
+          />
         </Col>
         <Col lg="5">
           <ScatterPlot

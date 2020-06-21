@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import examples from '../data/examples'
-import ActiveExample from './ActiveExample'
 
-const Examples = ({ setData }) => {
-  const [activeExample, setActiveExample] = useState(null)
-  const [exampleStep, setExampleStep] = useState(0)
-
+const Examples = ({ setActiveExample, setExampleStep, setData }) => {
   return (
     <>
       <Card>
@@ -35,13 +31,6 @@ const Examples = ({ setData }) => {
           )}
         </Card.Body>
       </Card>
-      <ActiveExample
-        activeExample={activeExample}
-        setActiveExample={setActiveExample}
-        exampleStep={exampleStep}
-        setExampleStep={setExampleStep}
-        setData={setData}
-      />
     </>
   )
 }
