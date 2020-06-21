@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { Card, ResponsiveEmbed } from 'react-bootstrap'
-import { axisBottom, axisRight, easePoly, event, mouse, scaleLinear, select } from 'd3'
+import { axisBottom, axisRight, easePoly, easeSin, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
@@ -116,11 +116,14 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
         },
         update => {
           update
+            .transition()
+            .ease(easeSin)
+            .duration(500)
             .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
             .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
+            .attr('opacity', 1)
             .attr('cx', value => xScale(value[0]))
             .attr('cy', value => yScale(value[1]))
-
 
         },
         exit => {
