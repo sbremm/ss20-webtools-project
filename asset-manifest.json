@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/ss20-webtools-project/static/css/main.1f3dfa8d.chunk.css",
-    "main.js": "/ss20-webtools-project/static/js/main.37246443.chunk.js",
-    "main.js.map": "/ss20-webtools-project/static/js/main.37246443.chunk.js.map",
+    "main.js": "/ss20-webtools-project/static/js/main.3222339f.chunk.js",
+    "main.js.map": "/ss20-webtools-project/static/js/main.3222339f.chunk.js.map",
     "runtime-main.js": "/ss20-webtools-project/static/js/runtime-main.d2d7955a.js",
     "runtime-main.js.map": "/ss20-webtools-project/static/js/runtime-main.d2d7955a.js.map",
-    "static/js/2.29544543.chunk.js": "/ss20-webtools-project/static/js/2.29544543.chunk.js",
-    "static/js/2.29544543.chunk.js.map": "/ss20-webtools-project/static/js/2.29544543.chunk.js.map",
+    "static/js/2.074d50e4.chunk.js": "/ss20-webtools-project/static/js/2.074d50e4.chunk.js",
+    "static/js/2.074d50e4.chunk.js.map": "/ss20-webtools-project/static/js/2.074d50e4.chunk.js.map",
     "index.html": "/ss20-webtools-project/index.html",
-    "precache-manifest.ec52353d1a7cf8466c5e6bfc3b5c5a5f.js": "/ss20-webtools-project/precache-manifest.ec52353d1a7cf8466c5e6bfc3b5c5a5f.js",
+    "precache-manifest.2250544608ef355b2fd839ebb9fd8f70.js": "/ss20-webtools-project/precache-manifest.2250544608ef355b2fd839ebb9fd8f70.js",
     "service-worker.js": "/ss20-webtools-project/service-worker.js",
     "static/css/main.1f3dfa8d.chunk.css.map": "/ss20-webtools-project/static/css/main.1f3dfa8d.chunk.css.map",
-    "static/js/2.29544543.chunk.js.LICENSE.txt": "/ss20-webtools-project/static/js/2.29544543.chunk.js.LICENSE.txt"
+    "static/js/2.074d50e4.chunk.js.LICENSE.txt": "/ss20-webtools-project/static/js/2.074d50e4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d2d7955a.js",
-    "static/js/2.29544543.chunk.js",
+    "static/js/2.074d50e4.chunk.js",
     "static/css/main.1f3dfa8d.chunk.css",
-    "static/js/main.37246443.chunk.js"
+    "static/js/main.3222339f.chunk.js"
   ]
 }
