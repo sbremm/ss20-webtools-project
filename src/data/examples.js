@@ -52,7 +52,7 @@ const examples = [
         ]
       },
       {
-        'description': 'Now the data is rotated by exactly 90 degrees. The Eigenvalues and Components are completely unaffected',
+        'description': 'Now the data is rotated by exactly 90 degrees. The Eigenvalues and Components are completely unaffected.',
         'data': [
           [-2, -34],
           [4, -22],
@@ -84,20 +84,6 @@ const examples = [
         ),
         'data': [[0,0], [-1,-1], [0,1], [-1,0]],
       }
-    ]
-  },
-  {
-    'title': 'Boring',
-    'tooltip': 'This example is boring',
-    'steps': [
-      {
-        'description': (
-          <>
-            This supports <strong>HTML tags</strong> as well.
-          </>
-        ),
-        'data': [[9,-7], [12,3], [-8,-8]],
-      },
     ]
   }
 ]
