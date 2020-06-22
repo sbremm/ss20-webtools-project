@@ -28,6 +28,42 @@ const examples = [
     ]
   },
   {
+    'title': 'Rotating linear data',
+    'tooltip': 'Shows how performing PCA on linear data is essentially just a rotation.',
+    'steps': [
+      {
+        'description': 'The data in this is very linear. Click next to rotate the data such that it aligns horizontally.',
+        'data': [
+          [-18.72,-10.65],
+          [-26.62,-20.47],
+          [4.93,0.38],
+          [12.03,11.23],
+          [28.37,19.52]
+        ],
+      },
+      {
+        'description': 'Note that Component 1 barely changed compared to the unrotated data. Also Component 1 and the Scatter Plot now look very similar.',
+        'data': [
+          [-34, -2],
+          [-22, 4],
+          [5, -2],
+          [16, 4],
+          [35, -1],
+        ]
+      },
+      {
+        'description': 'Now the data is rotated by exactly 90 degrees. The Eigenvalues and Components are completely unaffected',
+        'data': [
+          [-2, -34],
+          [4, -22],
+          [-2, 5],
+          [4, 16],
+          [-1, 35],
+        ]
+      }
+    ]
+  },
+  {
     'title': 'Cluster and outlier',
     'tooltip': 'A cluster of 4 points and 1 outlier',
     'steps': [
