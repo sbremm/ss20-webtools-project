@@ -27,7 +27,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       .nice()
 
     const yScale = scaleLinear()
-      .domain([domainMin, domainMax])
+      .domain([domainMax, domainMin])
       .range([0, 600])
       .nice()
 
