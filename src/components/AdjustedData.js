@@ -65,6 +65,10 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
       })
   }, [data, principalComponents, n, highlightedIndex, setHighlightedIndex])
 
+  const percentageExplained = data.length > 1
+    ? PCA.computePercentageExplained(principalComponents, principalComponents[Number(n) - 1])
+    : 0
+
   const headerStyle = {
     textDecoration: 'underline',
     textDecorationColor: componentColorer(Number(n - 1)),
@@ -88,6 +92,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
               <g className="x-axis" />
             </svg>
           </ResponsiveEmbed>
+          Explains {Number(percentageExplained * 100).toFixed(0)} % of the variance.
           <HelpButton
             title={Descriptions.AdjustedData.title}
             shorttext={Descriptions.AdjustedData.shortText}
