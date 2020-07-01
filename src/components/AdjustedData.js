@@ -65,7 +65,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
       })
   }, [data, principalComponents, n, highlightedIndex, setHighlightedIndex])
 
-  const percentageExplained = data.length > 1
+  const percentageExplained = principalComponents.length >= 2
     ? PCA.computePercentageExplained(principalComponents, principalComponents[Number(n) - 1])
     : 0
 
