@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Card, ResponsiveEmbed } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { axisBottom, axisRight, easeSin, scaleBand, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
@@ -68,13 +68,11 @@ const EigenvaluesChart = ({ principalComponents }) => {
       </Card.Header>
 
       <Card.Body>
-        <ResponsiveEmbed aspectRatio="16by9">
-          <svg ref={svgRef} width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 30} ${svgHeight + 30}`}>
-            <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
-            <g className="x-axis" />
-            <g className="y-axis" />
-          </svg>
-        </ResponsiveEmbed>
+        <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 30} ${svgHeight + 30}`}>
+          <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
+          <g className="x-axis" />
+          <g className="y-axis" />
+        </svg>
         <HelpButton
           title={Descriptions.EigenvaluesChart.title}
           shorttext={Descriptions.EigenvaluesChart.shortText}

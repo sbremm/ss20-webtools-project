@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Card, ResponsiveEmbed } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { axisBottom, axisRight, easePoly, easeSin, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
@@ -193,18 +193,16 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       </Card.Header>
 
       <Card.Body>
-        <ResponsiveEmbed>
-          <svg ref={svgRef} width="600" height="600" viewBox="0 0 650 650">
-            <clipPath id="rect-clip">
-              <rect x="0" y="0" width="600" height="600" />
-            </clipPath>
-            <rect x="0" y="0" width="600" height="600" fill="#eee" />
-            <g className="x-axis" />
-            <g className="y-axis" />
-            <g className="principal-components" />
-            <g className="data-points" />
-          </svg>
-        </ResponsiveEmbed>
+        <svg ref={svgRef} className="img-fluid w-100" width="600" height="600" viewBox="0 0 650 650">
+          <clipPath id="rect-clip">
+            <rect x="0" y="0" width="600" height="600" />
+          </clipPath>
+          <rect x="0" y="0" width="600" height="600" fill="#eee" />
+          <g className="x-axis" />
+          <g className="y-axis" />
+          <g className="principal-components" />
+          <g className="data-points" />
+        </svg>
         <HelpButton
           title={Descriptions.ScatterPlot.title}
           shorttext={Descriptions.ScatterPlot.shortText}

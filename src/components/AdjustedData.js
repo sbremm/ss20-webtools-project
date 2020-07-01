@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Card, ResponsiveEmbed } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { axisBottom, scaleLinear, select } from 'd3'
 import PCA from 'pca-js'
 import componentColorer from '../utils/componentColorer'
@@ -87,12 +87,10 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
         </Card.Header>
 
         <Card.Body>
-          <ResponsiveEmbed aspectRatio="21by9">
-            <svg ref={svgRef} width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight + 30}`}>
-              <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
-              <g className="x-axis" />
-            </svg>
-          </ResponsiveEmbed>
+          <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight + 30}`}>
+            <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
+            <g className="x-axis" />
+          </svg>
           Explains {Number(percentageExplained * 100).toFixed(0)} % of the variance.
           <HelpButton
             title={Descriptions.AdjustedData.title}
