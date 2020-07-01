@@ -37,7 +37,7 @@ function App () {
     <div className='w-100 p-3'>
       <Header />
       <Row>
-        <Col xs="2" style={{ minWidth: '300px' }}>
+        <Col sm="12" md="4" lg="4" xl="2">
           <About />
           <ActionsMenu
             data={data}
@@ -58,7 +58,7 @@ function App () {
             setData={setData}
           />
         </Col>
-        <Col lg="5">
+        <Col sm="12" md="8" lg="8" xl="5">
           <ScatterPlot
             data={data}
             setData={setData}
@@ -69,7 +69,7 @@ function App () {
             setHighlightedIndex={setHighlightedIndex}
           />
         </Col>
-        <Col lg="3">
+        <Col sm="12" md="8" lg="8" xl="3">
           <EigenvaluesChart principalComponents={principalComponents} />
           <div id="singleComponents">
             <AdjustedData
@@ -90,7 +90,7 @@ function App () {
             />
           </div>
         </Col>
-        <Col lg="2">
+        <Col sm="12" md="4" lg="4" xl="2">
           <DataTable
             data={data}
             setData={setData}
