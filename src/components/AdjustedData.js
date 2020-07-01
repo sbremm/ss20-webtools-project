@@ -6,8 +6,8 @@ import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
 
-const svgWidth = 315
-const svgHeight = 135
+const svgWidth = 300
+const svgHeight = 80
 
 const AdjustedData = ({ data, principalComponents, setHighlightedComponent, highlightedIndex, setHighlightedIndex, n }) => {
   const svgRef = useRef()
@@ -87,7 +87,7 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
         </Card.Header>
 
         <Card.Body>
-          <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight + 30}`}>
+          <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 10} ${svgHeight}`}>
             <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
             <g className="x-axis" />
           </svg>

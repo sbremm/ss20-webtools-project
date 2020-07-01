@@ -68,7 +68,7 @@ const EigenvaluesChart = ({ principalComponents }) => {
       </Card.Header>
 
       <Card.Body>
-        <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 30} ${svgHeight + 30}`}>
+        <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 60} ${svgHeight}`}>
           <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
           <g className="x-axis" />
           <g className="y-axis" />
