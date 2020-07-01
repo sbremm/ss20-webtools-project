@@ -15,13 +15,14 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
   useEffect(() => {
     const svg = select(svgRef.current)
 
-    let adjustedData
-    try {
-      adjustedData = PCA.computeAdjustedData(data, principalComponents[Number(n) - 1]).adjustedData[0]
-    } catch (exception) {
-      console.error('Handled exception in 3rd party library')
+    if (data.length === 0 || principalComponents.length === 0) {
+      svg
+        .selectAll('.dataPoint')
+        .remove()
       return
     }
+
+    const adjustedData = PCA.computeAdjustedData(data, principalComponents[Number(n) - 1]).adjustedData[0]
 
     // global minimum and maxium for all components
     const min = Math.min(...PCA.computeAdjustedData(data, principalComponents[0]).adjustedData[0], ...PCA.computeAdjustedData(data, principalComponents[1]).adjustedData[0])
