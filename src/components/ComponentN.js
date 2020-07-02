@@ -9,7 +9,7 @@ import Descriptions from '../data/descriptions'
 const svgWidth = 300
 const svgHeight = 80
 
-const AdjustedData = ({ data, principalComponents, setHighlightedComponent, highlightedIndex, setHighlightedIndex, n }) => {
+const ComponentN = ({ data, principalComponents, setHighlightedComponent, highlightedIndex, setHighlightedIndex, n }) => {
   const svgRef = useRef()
 
   useEffect(() => {
@@ -93,9 +93,9 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
           </svg>
           Explains {Number(percentageExplained * 100).toFixed(0)}% of the variance.
           <HelpButton
-            title={Descriptions.AdjustedData.title}
-            shorttext={Descriptions.AdjustedData.shortText}
-            longtext={Descriptions.AdjustedData.longText}
+            title={Descriptions.ComponentN.title}
+            shorttext={Descriptions.ComponentN.shortText}
+            longtext={Descriptions.ComponentN.longText}
           />
         </Card.Body>
       </Card>
@@ -103,4 +103,4 @@ const AdjustedData = ({ data, principalComponents, setHighlightedComponent, high
   )
 }
 
-export default AdjustedData
+export default ComponentN

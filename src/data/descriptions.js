@@ -6,7 +6,7 @@ const About = {
   'text': 'This text explains the purpose of this website.'
 }
 
-const AdjustedData = {
+const ComponentN = {
   'title': 'Component',
   'shortText': 'This is what the data looks like after reducing from two to one dimension',
   'longText': 'Lorem ipsum dolor sit amet. AdjustedData longText. TODO'
@@ -39,7 +39,7 @@ const ScatterPlot = {
 
 export default {
   About,
-  AdjustedData,
+  ComponentN,
   EigenvaluesChart,
   ScatterPlot,
 }

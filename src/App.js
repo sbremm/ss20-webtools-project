@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import PCA from 'pca-js'
 import About from './components/About'
 import ActionsMenu from './components/ActionsMenu'
-import AdjustedData from './components/AdjustedData'
+import ComponentN from './components/ComponentN'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
 import Footer from './components/Footer'
@@ -72,7 +72,7 @@ function App () {
         <Col sm="12" md="8" lg="8" xl="3">
           <EigenvaluesChart principalComponents={principalComponents} />
           <div id="singleComponents">
-            <AdjustedData
+            <ComponentN
               data={data}
               principalComponents={principalComponents}
               setHighlightedComponent={setHighlightedComponent}
@@ -80,7 +80,7 @@ function App () {
               setHighlightedIndex={setHighlightedIndex}
               n="1"
             />
-            <AdjustedData
+            <ComponentN
               data={data}
               principalComponents={principalComponents}
               setHighlightedComponent={setHighlightedComponent}
