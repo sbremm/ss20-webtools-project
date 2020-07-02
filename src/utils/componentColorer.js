@@ -1,3 +1,8 @@
+/**
+ * single source of truth for how the components are colored
+ * @param {number} n - number of the component
+ * @returns {string} color hex-code
+ */
 const componentColorer = (n) => {
   switch (n) {
   case 0:
