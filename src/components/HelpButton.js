@@ -21,7 +21,7 @@ const HelpButton = ({ title, shorttext, longtext }) => {
         </h5>
       </OverlayTrigger>
 
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
