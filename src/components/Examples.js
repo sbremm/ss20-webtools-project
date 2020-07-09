@@ -1,8 +1,15 @@
 import React from 'react'
-import { Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Button, Card, Modal } from 'react-bootstrap'
 import examples from '../data/examples'
 
 const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal, setShowExamplesModal }) => {
+  const loadExample = (example) => {
+    setActiveExample(example)
+    setExampleStep(0)
+    setData(example.steps[0].data)
+    setShowExamplesModal(false)
+  }
+
   return (
     <Modal
       show={showExamplesModal}
@@ -18,24 +25,26 @@ const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal
       </Modal.Header>
       <Modal.Body>
         {examples.map((example, index) =>
-          <OverlayTrigger key={index} placement="right" overlay={
-            <Tooltip id={'tooltip-right'}>
-              {example.tooltip}
-            </Tooltip>
-          }>
-            <Button
-              variant="secondary"
-              block
-              onClick={() => {
-                setActiveExample(example)
-                setExampleStep(0)
-                setData(example.steps[0].data)
-                setShowExamplesModal(false)
-              }}
-            >
-              {example.title}
-            </Button>
-          </OverlayTrigger>
+          <Card
+            key={index}
+            bg="light"
+            border="secondary"
+            tag="a"
+            style={{ cursor: 'pointer' }}
+            onClick={() => loadExample(example)}
+          >
+            <Card.Body>
+              <Card.Title>{example.title}</Card.Title>
+              <Card.Text>{example.tooltip}</Card.Text>
+              <Button
+                variant="secondary"
+                block
+                onClick={() => loadExample(example)}
+              >
+                Load this example
+              </Button>
+            </Card.Body>
+          </Card>
         )}
       </Modal.Body>
     </Modal>
