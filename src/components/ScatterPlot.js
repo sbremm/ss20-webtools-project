@@ -187,7 +187,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
   }, [data, setData, principalComponents, mean, highlightedComponent, setHighlightedIndex, highlightedIndex])
 
   return (
-    <Card>
+    <Card bg="light">
       <Card.Header as="h3">
         Scatter Plot
       </Card.Header>

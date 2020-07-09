@@ -62,7 +62,7 @@ const EigenvaluesChart = ({ principalComponents }) => {
   }, [principalComponents, eigenvalues])
 
   return (
-    <Card>
+    <Card bg="light">
       <Card.Header as="h3">
         Eigenvalues
       </Card.Header>

@@ -4,7 +4,7 @@ import Descriptions from '../data/descriptions'
 
 const About = () => {
   return (
-    <Card>
+    <Card bg="light">
       <Card.Header as="h3">
         About
       </Card.Header>

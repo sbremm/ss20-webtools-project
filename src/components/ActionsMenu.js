@@ -40,7 +40,7 @@ const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedInd
   }
 
   return (
-    <Card>
+    <Card bg="light">
       <Card.Header as="h3">
         Menu
       </Card.Header>
