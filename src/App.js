@@ -22,6 +22,7 @@ function App () {
   const [mean, setMean] = useState([0, 0])
   const [activeExample, setActiveExample] = useState(null)
   const [exampleStep, setExampleStep] = useState(0)
+  const [showExamplesModal, setShowExamplesModal] = useState(false)
 
   useEffect(() => {
     if (data.length === 0) {
@@ -44,11 +45,14 @@ function App () {
             setData={setData}
             setHighlightedComponent={setHighlightedComponent}
             setHighlightedIndex={setHighlightedIndex}
+            setShowExamplesModal={setShowExamplesModal}
           />
           <Examples
             setActiveExample={setActiveExample}
             setExampleStep={setExampleStep}
             setData={setData}
+            showExamplesModal={showExamplesModal}
+            setShowExamplesModal={setShowExamplesModal}
           />
           <ActiveExample
             activeExample={activeExample}

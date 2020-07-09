@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Button, Card, Form } from 'react-bootstrap'
 import PCA from 'pca-js'
 
-const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedIndex }) => {
+const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal }) => {
   const [uploadErrorMessage, setUploadErrorMessage] = useState(null)
 
   const generateRandomScatterPlot = () => {
@@ -46,10 +46,11 @@ const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedInd
       </Card.Header>
 
       <Card.Body>
+        <Button variant="secondary" block onClick={() => setShowExamplesModal(true)}>Examples</Button>
         <Button variant="secondary" block onClick={generateRandomScatterPlot}>Generate random data</Button>
         <Button variant="secondary" block onClick={() => reset()}>Clear data</Button>
         {data.length > 0 ?
-          <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center Data</Button> :
+          <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center cata</Button> :
           <Button variant="secondary" block disabled>Center Data</Button>
         }
         <Button

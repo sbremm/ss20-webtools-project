@@ -1,10 +1,16 @@
 import React  from 'react'
-import { Button, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Button, Card, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import examples from '../data/examples'
 
-const Examples = ({ setActiveExample, setExampleStep, setData }) => {
+const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal, setShowExamplesModal }) => {
   return (
-    <>
+    <Modal
+      show={showExamplesModal}
+      onHide={() => setShowExamplesModal(false)}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
       <Card>
         <Card.Header as="h3">
         Examples
@@ -31,7 +37,7 @@ const Examples = ({ setActiveExample, setExampleStep, setData }) => {
           )}
         </Card.Body>
       </Card>
-    </>
+    </Modal>
   )
 }
 
