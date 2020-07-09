@@ -30,6 +30,7 @@ const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal
                 setActiveExample(example)
                 setExampleStep(0)
                 setData(example.steps[0].data)
+                setShowExamplesModal(false)
               }}
             >
               {example.title}
