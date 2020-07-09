@@ -5,8 +5,8 @@ const About = {
   'title': 'About',
   'text': (
     <>
-      This website will hopefully help you to get a better understanding of the
-      <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">principal component analysis</a> (PCA).<br />
+      This website will hopefully help you to get a better understanding of
+      the <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">principal component analysis</a> (PCA).<br />
       Pick one of the interactive examples or enter your own data,
       and see how this affects the PCA that is automatically calculated in the background.
     </>
