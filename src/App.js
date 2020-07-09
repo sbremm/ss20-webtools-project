@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import { Row, Col } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import PCA from 'pca-js'
 import About from './components/About'
 import ActionsMenu from './components/ActionsMenu'
@@ -39,7 +39,17 @@ function App () {
       <Header />
       <Row>
         <Col sm="12" md="4" lg="4" xl="2">
-          <About />
+          {activeExample ?
+            <ActiveExample
+              activeExample={activeExample}
+              setActiveExample={setActiveExample}
+              exampleStep={exampleStep}
+              setExampleStep={setExampleStep}
+              setData={setData}
+            />
+            :
+            <About />
+          }
           <ActionsMenu
             data={data}
             setData={setData}
@@ -53,13 +63,6 @@ function App () {
             setData={setData}
             showExamplesModal={showExamplesModal}
             setShowExamplesModal={setShowExamplesModal}
-          />
-          <ActiveExample
-            activeExample={activeExample}
-            setActiveExample={setActiveExample}
-            exampleStep={exampleStep}
-            setExampleStep={setExampleStep}
-            setData={setData}
           />
         </Col>
         <Col sm="12" md="8" lg="8" xl="5">
