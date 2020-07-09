@@ -35,7 +35,7 @@ const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal
           >
             <Card.Body>
               <Card.Title>{example.title}</Card.Title>
-              <Card.Text>{example.tooltip}</Card.Text>
+              <Card.Text>{example.description}</Card.Text>
               <Button
                 variant="secondary"
                 block

@@ -3,7 +3,7 @@ import React from 'react'
 const examples = [
   {
     'title': 'Business Analytics lecture example',
-    'tooltip': 'An example very similar to slide set 8, slide 16 of the Business Analytics lecture.',
+    'description': 'An example very similar to slide set 8, slide 16 of the Business Analytics lecture.',
     'steps': [
       {
         'description': (
@@ -29,7 +29,7 @@ const examples = [
   },
   {
     'title': 'Rotating linear data',
-    'tooltip': 'Shows how performing PCA on linear data is essentially just a rotation.',
+    'description': 'Shows how performing PCA on linear data is essentially just a rotation.',
     'steps': [
       {
         'description': 'The data in this is very linear. Click next to rotate the data such that it aligns horizontally.',
@@ -65,7 +65,7 @@ const examples = [
   },
   {
     'title': 'Cluster and outlier',
-    'tooltip': 'A cluster of 4 points and 1 outlier',
+    'description': 'A cluster of 4 points and 1 outlier',
     'steps': [
       {
         'description': (
