@@ -17,7 +17,7 @@ const HelpButton = ({ title, shorttext, longtext }) => {
         </Tooltip>
       }>
         <h5>
-          <Button variant="info" size="sm" onClick={handleShow}>Help</Button>
+          <Button variant="primary" size="sm" onClick={handleShow}>Help</Button>
         </h5>
       </OverlayTrigger>
 
@@ -27,7 +27,7 @@ const HelpButton = ({ title, shorttext, longtext }) => {
         </Modal.Header>
         <Modal.Body>{longtext}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
