@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className="bg-dark text-light text-center" style={{ padding: '1em', marginBottom: '1em' }}>
+    <div className="text-dark text-center" style={{ padding: '1em', marginBottom: '1em' }}>
       © 2020 Marcus Legendre<br />
       This software is licensed under the <a href="https://github.com/orangefoil/ss20-webtools-project/blob/master/LICENSE.md">MIT License</a>.
       The source code is hosted on <a href="https://github.com/orangefoil/ss20-webtools-project/">GitHub</a>.<br />
