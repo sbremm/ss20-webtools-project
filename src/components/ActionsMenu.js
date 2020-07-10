@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Button, Card, Form } from 'react-bootstrap'
+import { Alert, Form, Nav, Navbar } from 'react-bootstrap'
 import PCA from 'pca-js'
 
 const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal }) => {
@@ -40,45 +40,45 @@ const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedInd
   }
 
   return (
-    <Card bg="light">
-      <Card.Header as="h3">
-        Menu
-      </Card.Header>
+    <Navbar collapseOnSelect expand="lg" fixed="top" bg="primary" variant="dark">
+      <Navbar.Brand>Principal Component Analysis</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      <Card.Body>
-        <Button variant="secondary" block onClick={() => setShowExamplesModal(true)}>Examples</Button>
-        <Button variant="secondary" block onClick={generateRandomScatterPlot}>Generate random data</Button>
-        <Button variant="secondary" block onClick={() => reset()}>Clear data</Button>
-        {data.length > 0 ?
-          <Button variant="secondary" block onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center cata</Button> :
-          <Button variant="secondary" block disabled>Center Data</Button>
-        }
-        <Button
-          variant="secondary"
-          block
-          href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`}
-          download="data.json"
-        >
-          Export data
-        </Button>
-        <Form>
-          <Form.File
-            label="Import JSON file"
-            custom
-            onChange={handleUpload}
-          />
-        </Form>
-        {
-          uploadErrorMessage ?
-            <Alert variant="danger">
-              {uploadErrorMessage}
-            </Alert>
-            :
-            ''
-        }
-      </Card.Body>
-    </Card>
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+
+          <Nav.Link onClick={() => setShowExamplesModal(true)}>Examples</Nav.Link>
+          <Nav.Link onClick={generateRandomScatterPlot}>Generate random data</Nav.Link>
+          <Nav.Link onClick={() => reset()}>Clear data</Nav.Link>
+          {data.length > 0 ?
+            <Nav.Link onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center data</Nav.Link> :
+            <Nav.Link disabled>Center data</Nav.Link>
+          }
+          <Nav.Link
+            href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`}
+            download="data.json"
+          >
+            Export data
+          </Nav.Link>
+          <Form>
+            <Form.File
+              label="Import JSON file"
+              custom
+              onChange={handleUpload}
+            />
+          </Form>
+          {
+            uploadErrorMessage ?
+              <Alert variant="danger">
+                {uploadErrorMessage}
+              </Alert>
+              :
+              ''
+          }
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }
 
-export default  ActionsMenu
+export default ActionsMenu

@@ -8,7 +8,6 @@ import ComponentN from './components/ComponentN'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
 import Footer from './components/Footer'
-import Header from './components/Header'
 import ScatterPlot from './components/ScatterPlot'
 import EigenvaluesChart from './components/EigenvaluesChart'
 import mathHelper from './utils/mathHelper'
@@ -36,7 +35,13 @@ function App () {
 
   return (
     <div className='w-100 p-3'>
-      <Header />
+      <ActionsMenu
+        data={data}
+        setData={setData}
+        setHighlightedComponent={setHighlightedComponent}
+        setHighlightedIndex={setHighlightedIndex}
+        setShowExamplesModal={setShowExamplesModal}
+      />
       <Row>
         <Col sm="12" md="4" lg="4" xl="2">
           {activeExample ?
@@ -50,13 +55,6 @@ function App () {
             :
             <About />
           }
-          <ActionsMenu
-            data={data}
-            setData={setData}
-            setHighlightedComponent={setHighlightedComponent}
-            setHighlightedIndex={setHighlightedIndex}
-            setShowExamplesModal={setShowExamplesModal}
-          />
           <Examples
             setActiveExample={setActiveExample}
             setExampleStep={setExampleStep}

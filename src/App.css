@@ -1,12 +1,13 @@
 body {
   background-color: #f7f9fa;
+  padding-top: 3em;
 }
 
 svg {
   overflow: visible;
-  margin: 10px 0px 0px 10px;
+  margin: 10px 0 0 10px;
 }
 
 .card {
-  margin-bottom: 1em;
+  margin: 1em 0 1em 0;
 }
