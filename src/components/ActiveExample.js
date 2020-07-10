@@ -15,8 +15,8 @@ const ActiveExample = ({ activeExample, setActiveExample, exampleStep, setExampl
   if (!activeExample) return ''
   return (
     (
-      <Card bg="light">
-        <Card.Header as="h5">
+      <Card bg="light" className="border-info">
+        <Card.Header as="h5" className="bg-info text-light">
             Example: {activeExample.title}
         </Card.Header>
         <Card.Body>
@@ -45,11 +45,10 @@ const ActiveExample = ({ activeExample, setActiveExample, exampleStep, setExampl
             :
             ''
           }
-
         </Card.Body>
         <Card.Footer>
           <Button
-            variant="outline-dark"
+            variant="outline-info"
             block
             onClick={() => {
               setActiveExample(null)
