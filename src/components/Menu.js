@@ -55,6 +55,14 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
           }
         </Nav>
         <Nav>
+          {
+            uploadErrorMessage ?
+              <Alert variant="danger">
+                {uploadErrorMessage}
+              </Alert>
+              :
+              ''
+          }
           <Nav.Link
             href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`}
             download="data.json"
@@ -68,14 +76,6 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
               onChange={handleUpload}
             />
           </Form>
-          {
-            uploadErrorMessage ?
-              <Alert variant="danger">
-                {uploadErrorMessage}
-              </Alert>
-              :
-              ''
-          }
         </Nav>
       </Navbar.Collapse>
     </Navbar>
