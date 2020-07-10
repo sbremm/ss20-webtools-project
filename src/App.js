@@ -41,7 +41,7 @@ function App () {
 
     setTimeout(() => {
       if (data.length === 0 && !showExamplesModal) setShowTooltips(true)
-    }, 750)
+    }, 2500)
   }, [data, showExamplesModal])
 
   return (
