@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Form, Nav, Navbar } from 'react-bootstrap'
 import PCA from 'pca-js'
 
-const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal }) => {
+const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal }) => {
   const [uploadErrorMessage, setUploadErrorMessage] = useState(null)
 
   const generateRandomScatterPlot = () => {
@@ -81,4 +81,4 @@ const ActionsMenu = ({ data, setData, setHighlightedComponent, setHighlightedInd
   )
 }
 
-export default ActionsMenu
+export default Menu

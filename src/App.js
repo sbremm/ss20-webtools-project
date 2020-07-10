@@ -3,7 +3,7 @@ import './App.css'
 import { Col, Row } from 'react-bootstrap'
 import PCA from 'pca-js'
 import About from './components/About'
-import ActionsMenu from './components/ActionsMenu'
+import Menu from './components/Menu'
 import ComponentN from './components/ComponentN'
 import DataTable from './components/DataTable'
 import Examples from './components/Examples'
@@ -35,7 +35,7 @@ function App () {
 
   return (
     <div className='w-100 p-3'>
-      <ActionsMenu
+      <Menu
         data={data}
         setData={setData}
         setHighlightedComponent={setHighlightedComponent}
