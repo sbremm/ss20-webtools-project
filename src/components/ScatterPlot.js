@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Overlay, Tooltip } from 'react-bootstrap'
 import { axisBottom, axisRight, easePoly, easeSin, event, mouse, scaleLinear, select } from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
 
-const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComponent, highlightedIndex, setHighlightedIndex }) => {
+const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComponent, highlightedIndex, setHighlightedIndex, showTooltips }) => {
   const svgRef = useRef()
 
   // this executes on page load and every time the data changes
@@ -134,7 +134,6 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
         }
       )
 
-
     // data points are deleted on click
     svg
       .select('.data-points')
@@ -191,6 +190,12 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       <Card.Header as="h5">
         Scatter Plot
       </Card.Header>
+
+      <Overlay target={svgRef.current} show={showTooltips} placement="top">
+        <Tooltip id="tooltip-scatter-plot">
+          Click inside the scatter plot to add points.
+        </Tooltip>
+      </Overlay>
 
       <Card.Body>
         <svg ref={svgRef} className="img-fluid w-100" width="600" height="600" viewBox="0 0 650 650">

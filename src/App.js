@@ -14,7 +14,7 @@ import mathHelper from './utils/mathHelper'
 import ActiveExample from './components/ActiveExample'
 
 function App () {
-  const [data, setData] = useState([[0, 0]])
+  const [data, setData] = useState([])
   const [highlightedComponent, setHighlightedComponent] = useState(null)
   const [highlightedIndex, setHighlightedIndex] = useState(null)
   const [principalComponents, setPrincipalComponents] = useState([])
@@ -22,7 +22,9 @@ function App () {
   const [activeExample, setActiveExample] = useState(null)
   const [exampleStep, setExampleStep] = useState(0)
   const [showExamplesModal, setShowExamplesModal] = useState(false)
+  const [showTooltips, setShowTooltips] = useState(false)
 
+  // calculcate PCA on data change
   useEffect(() => {
     if (data.length === 0) {
       setPrincipalComponents([])
@@ -33,6 +35,15 @@ function App () {
     setMean(mathHelper.mean(data))
   }, [data])
 
+  // show tooltips if data is empty
+  useEffect(() => {
+    if (data.length > 0 || showExamplesModal) setShowTooltips(false)
+
+    setTimeout(() => {
+      if (data.length === 0 && !showExamplesModal) setShowTooltips(true)
+    }, 750)
+  }, [data, showExamplesModal])
+
   return (
     <div className='w-100 p-3'>
       <Menu
@@ -41,6 +52,7 @@ function App () {
         setHighlightedComponent={setHighlightedComponent}
         setHighlightedIndex={setHighlightedIndex}
         setShowExamplesModal={setShowExamplesModal}
+        showTooltips={showTooltips}
       />
       <Row>
         <Col sm="12" md="4" lg="4" xl="2">
@@ -71,6 +83,7 @@ function App () {
             highlightedComponent={highlightedComponent}
             highlightedIndex={highlightedIndex}
             setHighlightedIndex={setHighlightedIndex}
+            showTooltips={showTooltips}
           />
         </Col>
         <Col sm="12" md="8" lg="8" xl="3">
@@ -100,6 +113,7 @@ function App () {
             setData={setData}
             highlightedIndex={highlightedIndex}
             setHighlightedIndex={setHighlightedIndex}
+            showTooltips={showTooltips}
           />
         </Col>
       </Row>

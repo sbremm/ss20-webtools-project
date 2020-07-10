@@ -1,7 +1,8 @@
-import React from 'react'
-import { Button, Card, Col, Form, Row, Table, } from 'react-bootstrap'
+import React, { useRef } from 'react'
+import { Button, Card, Col, Form, Overlay, Row, Table, Tooltip, } from 'react-bootstrap'
 
-const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => {
+const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex, showTooltips }) => {
+  const addButtonRef = useRef()
   const handleDelete = (index) => {
     return (event) => {
       event.preventDefault()
@@ -69,11 +70,17 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
           </Form.Group>
           <Form.Group as={Row}>
             <Col sm="12">
-              <Button variant="secondary" block type="submit">Add</Button>
+              <Button ref={addButtonRef} variant="secondary" block type="submit">Add</Button>
             </Col>
           </Form.Group>
         </Form>
       </Card.Body>
+
+      <Overlay target={addButtonRef.current} show={showTooltips} placement="bottom">
+        <Tooltip id="tooltip-data-table">
+          Add points by entering coordinates.
+        </Tooltip>
+      </Overlay>
 
     </Card>
   )

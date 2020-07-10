@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { Alert, Form, Nav, Navbar } from 'react-bootstrap'
+import React, { useRef, useState } from 'react'
+import { Alert, Form, Nav, Navbar, Overlay, Tooltip } from 'react-bootstrap'
 import PCA from 'pca-js'
 
-const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal }) => {
+const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, setShowExamplesModal, showTooltips }) => {
+  const exampleLinkRef = useRef()
   const [uploadErrorMessage, setUploadErrorMessage] = useState(null)
 
   const generateRandomScatterPlot = () => {
@@ -46,7 +47,12 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link onClick={() => setShowExamplesModal(true)}>Examples</Nav.Link>
+          <Nav.Link ref={exampleLinkRef} onClick={() => setShowExamplesModal(true)}>Examples</Nav.Link>
+          <Overlay target={exampleLinkRef.current} show={showTooltips} placement="bottom">
+            <Tooltip id="tooltip-example">
+              Not sure where to start? Pick an example!
+            </Tooltip>
+          </Overlay>
           <Nav.Link onClick={generateRandomScatterPlot}>Generate random data</Nav.Link>
           <Nav.Link onClick={() => reset()}>Clear data</Nav.Link>
           {data.length > 0 ?
@@ -54,6 +60,7 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
             <Nav.Link disabled>Center data</Nav.Link>
           }
         </Nav>
+
         <Nav>
           {
             uploadErrorMessage ?
