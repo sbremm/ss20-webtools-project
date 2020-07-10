@@ -46,7 +46,6 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-
           <Nav.Link onClick={() => setShowExamplesModal(true)}>Examples</Nav.Link>
           <Nav.Link onClick={generateRandomScatterPlot}>Generate random data</Nav.Link>
           <Nav.Link onClick={() => reset()}>Clear data</Nav.Link>
@@ -54,6 +53,8 @@ const Menu = ({ data, setData, setHighlightedComponent, setHighlightedIndex, set
             <Nav.Link onClick={() => setData(PCA.computeDeviationMatrix(data))}>Center data</Nav.Link> :
             <Nav.Link disabled>Center data</Nav.Link>
           }
+        </Nav>
+        <Nav>
           <Nav.Link
             href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`}
             download="data.json"
