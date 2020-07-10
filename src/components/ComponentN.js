@@ -82,7 +82,7 @@ const ComponentN = ({ data, principalComponents, setHighlightedComponent, highli
       onMouseLeave={() => setHighlightedComponent(null)}
     >
       <Card bg="light">
-        <Card.Header as="h3" style={headerStyle}>
+        <Card.Header as="h5" style={headerStyle}>
           Component {n}
         </Card.Header>
 

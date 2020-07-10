@@ -16,7 +16,7 @@ const ActiveExample = ({ activeExample, setActiveExample, exampleStep, setExampl
   return (
     (
       <Card bg="light">
-        <Card.Header as="h3">
+        <Card.Header as="h5">
             Example: {activeExample.title}
         </Card.Header>
         <Card.Body>

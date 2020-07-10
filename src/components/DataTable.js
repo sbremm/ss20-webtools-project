@@ -28,7 +28,7 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
 
   return (
     <Card bg="light">
-      <Card.Header as="h3">
+      <Card.Header as="h5">
         Data
       </Card.Header>
 
