@@ -44,7 +44,8 @@ function App () {
       />
       <Row>
         <Col sm="12" md="4" lg="4" xl="2">
-          {activeExample ?
+          <About />
+          {activeExample &&
             <ActiveExample
               activeExample={activeExample}
               setActiveExample={setActiveExample}
@@ -52,8 +53,6 @@ function App () {
               setExampleStep={setExampleStep}
               setData={setData}
             />
-            :
-            <About />
           }
           <Examples
             setActiveExample={setActiveExample}
