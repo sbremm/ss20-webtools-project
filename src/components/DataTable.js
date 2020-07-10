@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  Row,
-  Table,
-} from 'react-bootstrap'
+import { Button, Card, Col, Form, Row, Table, } from 'react-bootstrap'
 
 const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => {
   const handleDelete = (index) => {
@@ -33,7 +26,8 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
       </Card.Header>
 
       <Card.Body>
-        <Table bordered hover size="sm">
+        {data.length > 0 &&
+        <Table bordered hover striped size="sm">
           <thead>
             <tr>
               <th>X</th>
@@ -56,6 +50,8 @@ const DataTable = ({ data, setData, highlightedIndex, setHighlightedIndex }) => 
             )}
           </tbody>
         </Table>
+        }
+
 
         <h5>Add data point</h5>
         <Form onSubmit={addDataPoint}>
