@@ -24,7 +24,7 @@ function App () {
   const [showExamplesModal, setShowExamplesModal] = useState(false)
   const [showTooltips, setShowTooltips] = useState(false)
 
-  // calculcate PCA on data change
+  // calculate PCA on data change
   useEffect(() => {
     if (data.length === 0) {
       setPrincipalComponents([])

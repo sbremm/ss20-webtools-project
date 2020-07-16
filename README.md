@@ -1,4 +1,4 @@
-# Webtools Projekt
+# Webtools Project
 [Click here](https://orangefoil.github.io/ss20-webtools-project/) to see this project in action.
 
 ## Prerequisites

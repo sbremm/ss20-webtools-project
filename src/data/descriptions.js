@@ -34,7 +34,7 @@ const EigenvaluesChart = {
     <>
       Principal Components are always sorted in order of significance. So the first component will always be
       the one that explains the most data.<br />
-      The absolute value of the eigenvalues is not that important. High abolute eigenvalues only indicate that the
+      The absolute value of the eigenvalues is not that important. High absolute eigenvalues only indicate that the
       data points are comprised of big numbers.
     </>
   )

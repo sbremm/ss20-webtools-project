@@ -24,7 +24,7 @@ const ComponentN = ({ data, principalComponents, setHighlightedComponent, highli
 
     const adjustedData = PCA.computeAdjustedData(data, principalComponents[Number(n) - 1]).adjustedData[0]
 
-    // global minimum and maxium for all components
+    // global minimum and maximum for all components
     const min = Math.min(...PCA.computeAdjustedData(data, principalComponents[0]).adjustedData[0], ...PCA.computeAdjustedData(data, principalComponents[1]).adjustedData[0])
     const max = Math.max(...PCA.computeAdjustedData(data, principalComponents[0]).adjustedData[0], ...PCA.computeAdjustedData(data, principalComponents[1]).adjustedData[0])
 
