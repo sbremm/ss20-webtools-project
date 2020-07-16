@@ -1,4 +1,4 @@
-name: github pages
+name: release and deploy
 
 on:
   push:
@@ -6,19 +6,56 @@ on:
       - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: npm install
-    - run: npm run build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: |
+          npm install
+          npm run build
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+      - name: Create compressed archive
+        run: |
+          cd build
+          tar cvfz ../ss20-webtools-project.tar.gz ./*
+      - name: Create release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: Latest
+          files: |
+            LICENSE.md
+            ss20-webtools-project.tar.gz
