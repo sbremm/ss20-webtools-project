@@ -3,12 +3,16 @@
  * @param data
  * @returns {number[]} array of form [x, y] with x and y being the averages of their respective axis
  */
-const mean = data => {
+const mean = (data) => {
   const sum = [
-    data.map(value => value[0]).reduce((accumulator, value) => accumulator + value, 0),
-    data.map(value => value[1]).reduce((accumulator, value) => accumulator + value, 0)
+    data
+      .map((value) => value[0])
+      .reduce((accumulator, value) => accumulator + value, 0),
+    data
+      .map((value) => value[1])
+      .reduce((accumulator, value) => accumulator + value, 0),
   ]
-  return sum.map(value => value / data.length)
+  return sum.map((value) => value / data.length)
 }
 
 /**
@@ -38,10 +42,7 @@ const lineIntersection = (gradient1, c1, gradient2, c2) => {
   const b = gradient2
   const c = c1
   const d = c2
-  return [
-    (d - c) / (a - b),
-    a * ((d - c) / (a - b)) + c,
-  ]
+  return [(d - c) / (a - b), a * ((d - c) / (a - b)) + c]
 }
 
 export default {

@@ -1,12 +1,30 @@
 import React, { useEffect, useRef } from 'react'
 import { Card, Overlay, Tooltip } from 'react-bootstrap'
-import { axisBottom, axisRight, easePoly, easeSin, event, mouse, scaleLinear, select } from 'd3'
+import {
+  axisBottom,
+  axisRight,
+  easePoly,
+  easeSin,
+  event,
+  mouse,
+  scaleLinear,
+  select,
+} from 'd3'
 import componentColorer from '../utils/componentColorer'
 import mathHelper from '../utils/mathHelper'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
 
-const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComponent, highlightedIndex, setHighlightedIndex, showTooltips }) => {
+const ScatterPlot = ({
+  data,
+  setData,
+  principalComponents,
+  mean,
+  highlightedComponent,
+  highlightedIndex,
+  setHighlightedIndex,
+  showTooltips,
+}) => {
   const svgRef = useRef()
 
   // this executes on page load and every time the data changes
@@ -16,8 +34,16 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
     let domainMin = -5
     let domainMax = 5
     if (data.length > 0) {
-      domainMin = Math.min(...data.map(value => value[0]), ...data.map(value => value[1])) - 5
-      domainMax = Math.max(...data.map(value => value[0]), ...data.map(value => value[1])) + 5
+      domainMin =
+        Math.min(
+          ...data.map((value) => value[0]),
+          ...data.map((value) => value[1]),
+        ) - 5
+      domainMax =
+        Math.max(
+          ...data.map((value) => value[0]),
+          ...data.map((value) => value[1]),
+        ) + 5
     }
 
     // create scales that map our data to the fixed size screen space
@@ -56,7 +82,7 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
         0,
       )
       // calculate intersections between residues and the principal component
-      const intersections = data.map(value => {
+      const intersections = data.map((value) => {
         const residueGradientFunction = mathHelper.vectorToGradientFunction(
           principalComponents[n].vector[0],
           principalComponents[n].vector[1],
@@ -80,58 +106,60 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
         .attr('clip-path', 'url(#rect-clip)')
         .attr('stroke-width', 1)
         .attr('stroke', 'red')
-        .attr('x1', value => xScale(value[0]))
-        .attr('y1', value => yScale(value[1]))
+        .attr('x1', (value) => xScale(value[0]))
+        .attr('y1', (value) => yScale(value[1]))
         .attr('x2', (_value, index) => xScale(intersections[index][0]))
         .attr('y2', (_value, index) => yScale(intersections[index][1]))
         .transition()
         .duration(500)
         .attr('opacity', 1)
     } else {
-      svg
-        .selectAll('.residue')
-        .remove()
+      svg.selectAll('.residue').remove()
     }
 
     // draw data points
     svg
       .select('.data-points')
       .selectAll('.dataPoint')
-      .data(data, d => [d[0], d[1]])
+      .data(data, (d) => [d[0], d[1]])
       .join(
-        enter => {
-          enter.append('circle')
+        (enter) => {
+          enter
+            .append('circle')
             .attr('class', 'dataPoint')
-            .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
-            .attr('cx', value => xScale(value[0]))
-            .attr('cy', value => yScale(value[1]))
+            .style('fill', (_value, index) =>
+              index === highlightedIndex ? 'red' : 'black',
+            )
+            .attr('cx', (value) => xScale(value[0]))
+            .attr('cy', (value) => yScale(value[1]))
             .attr('r', 6)
             .attr('opacity', 0)
-            .call(enter => enter.transition()
-              .duration(500)
-              .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
-              .attr('opacity', 1)
+            .call((enter) =>
+              enter
+                .transition()
+                .duration(500)
+                .attr('r', (_value, index) =>
+                  index === highlightedIndex ? 5 : 3,
+                )
+                .attr('opacity', 1),
             )
-
         },
-        update => {
+        (update) => {
           update
             .transition()
             .ease(easeSin)
             .duration(500)
-            .attr('r', (_value, index) => index === highlightedIndex ? 5 : 3)
-            .style('fill', (_value, index) => index === highlightedIndex ? 'red' : 'black')
+            .attr('r', (_value, index) => (index === highlightedIndex ? 5 : 3))
+            .style('fill', (_value, index) =>
+              index === highlightedIndex ? 'red' : 'black',
+            )
             .attr('opacity', 1)
-            .attr('cx', value => xScale(value[0]))
-            .attr('cy', value => yScale(value[1]))
-
+            .attr('cx', (value) => xScale(value[0]))
+            .attr('cy', (value) => yScale(value[1]))
         },
-        exit => {
-          exit
-            .transition()
-            .attr('r', 0)
-            .remove()
-        }
+        (exit) => {
+          exit.transition().attr('r', 0).remove()
+        },
       )
 
     // data points are deleted on click
@@ -179,17 +207,23 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       .transition()
       .ease(easePoly)
       .duration(1000)
-      .attr('x1', component => xScale(3 * domainMin * component.vector[0]))
-      .attr('y1', component => yScale(3 * domainMin * component.vector[1]))
-      .attr('x2', component => xScale(3 * domainMax * component.vector[0]))
-      .attr('y2', component => yScale(3 * domainMax * component.vector[1]))
-  }, [data, setData, principalComponents, mean, highlightedComponent, setHighlightedIndex, highlightedIndex])
+      .attr('x1', (component) => xScale(3 * domainMin * component.vector[0]))
+      .attr('y1', (component) => yScale(3 * domainMin * component.vector[1]))
+      .attr('x2', (component) => xScale(3 * domainMax * component.vector[0]))
+      .attr('y2', (component) => yScale(3 * domainMax * component.vector[1]))
+  }, [
+    data,
+    setData,
+    principalComponents,
+    mean,
+    highlightedComponent,
+    setHighlightedIndex,
+    highlightedIndex,
+  ])
 
   return (
     <Card bg="light">
-      <Card.Header as="h5">
-        Scatter Plot
-      </Card.Header>
+      <Card.Header as="h5">Scatter Plot</Card.Header>
 
       <Overlay target={svgRef.current} show={showTooltips} placement="top">
         <Tooltip id="tooltip-scatter-plot">
@@ -198,7 +232,13 @@ const ScatterPlot = ({ data, setData, principalComponents, mean, highlightedComp
       </Overlay>
 
       <Card.Body>
-        <svg ref={svgRef} className="img-fluid w-100" width="600" height="600" viewBox="0 0 650 650">
+        <svg
+          ref={svgRef}
+          className="img-fluid w-100"
+          width="600"
+          height="600"
+          viewBox="0 0 650 650"
+        >
           <clipPath id="rect-clip">
             <rect x="0" y="0" width="600" height="600" />
           </clipPath>

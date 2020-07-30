@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-
 const HelpButton = ({ title, shorttext, longtext }) => {
   const [showModal, setShowModal] = useState(false)
 
@@ -10,14 +9,19 @@ const HelpButton = ({ title, shorttext, longtext }) => {
 
   return (
     <div className="float-right">
-      <OverlayTrigger placement="left" overlay={
-        <Tooltip id={'tooltip-left'}>
-          <p>{ shorttext }</p>
-          <strong>Click to learn more.</strong>
-        </Tooltip>
-      }>
+      <OverlayTrigger
+        placement="left"
+        overlay={
+          <Tooltip id={'tooltip-left'}>
+            <p>{shorttext}</p>
+            <strong>Click to learn more.</strong>
+          </Tooltip>
+        }
+      >
         <h5>
-          <Button variant="primary" size="sm" onClick={handleShow}>Help</Button>
+          <Button variant="primary" size="sm" onClick={handleShow}>
+            Help
+          </Button>
         </h5>
       </OverlayTrigger>
 

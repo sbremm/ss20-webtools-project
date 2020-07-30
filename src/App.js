@@ -13,7 +13,7 @@ import EigenvaluesChart from './components/EigenvaluesChart'
 import mathHelper from './utils/mathHelper'
 import ActiveExample from './components/ActiveExample'
 
-function App () {
+const App = () => {
   const [data, setData] = useState([])
   const [highlightedComponent, setHighlightedComponent] = useState(null)
   const [highlightedIndex, setHighlightedIndex] = useState(null)
@@ -45,7 +45,7 @@ function App () {
   }, [data, showExamplesModal])
 
   return (
-    <div className='w-100 p-3'>
+    <div className="w-100 p-3">
       <Menu
         data={data}
         setData={setData}
@@ -57,7 +57,7 @@ function App () {
       <Row>
         <Col sm="12" md="4" lg="4" xl="2">
           <About />
-          {activeExample &&
+          {activeExample && (
             <ActiveExample
               activeExample={activeExample}
               setActiveExample={setActiveExample}
@@ -65,7 +65,7 @@ function App () {
               setExampleStep={setExampleStep}
               setData={setData}
             />
-          }
+          )}
           <Examples
             setActiveExample={setActiveExample}
             setExampleStep={setExampleStep}

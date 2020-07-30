@@ -1,6 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 import { Card } from 'react-bootstrap'
-import { axisBottom, axisRight, easeSin, scaleBand, scaleLinear, select } from 'd3'
+import {
+  axisBottom,
+  axisRight,
+  easeSin,
+  scaleBand,
+  scaleLinear,
+  select,
+} from 'd3'
 import componentColorer from '../utils/componentColorer'
 import HelpButton from './HelpButton'
 import Descriptions from '../data/descriptions'
@@ -11,7 +18,7 @@ const svgHeight = 150
 const EigenvaluesChart = ({ principalComponents }) => {
   const svgRef = useRef()
 
-  const eigenvalues = principalComponents.map(vector => vector.eigenvalue)
+  const eigenvalues = principalComponents.map((vector) => vector.eigenvalue)
 
   useEffect(() => {
     const svg = select(svgRef.current)
@@ -24,16 +31,11 @@ const EigenvaluesChart = ({ principalComponents }) => {
       .range([0, svgWidth])
       .padding(0.5)
 
-    const yScale = scaleLinear()
-      .domain([0, maxY])
-      .range([svgHeight, 0])
+    const yScale = scaleLinear().domain([0, maxY]).range([svgHeight, 0])
 
     // draw Y axis and bar numbers
     const xAxis = axisBottom(xScale).ticks(eigenvalues.length)
-    svg
-      .select('.x-axis')
-      .style('transform', 'translateY(150px)')
-      .call(xAxis)
+    svg.select('.x-axis').style('transform', 'translateY(150px)').call(xAxis)
 
     const yAxis = axisRight(yScale)
     svg
@@ -57,18 +59,22 @@ const EigenvaluesChart = ({ principalComponents }) => {
       .transition()
       .ease(easeSin)
       .duration(500)
-      .attr('height', value => svgHeight - yScale(value))
+      .attr('height', (value) => svgHeight - yScale(value))
       .style('fill', (_value, index) => componentColorer(index))
   }, [principalComponents, eigenvalues])
 
   return (
     <Card bg="light">
-      <Card.Header as="h5">
-        Eigenvalues
-      </Card.Header>
+      <Card.Header as="h5">Eigenvalues</Card.Header>
 
       <Card.Body>
-        <svg ref={svgRef} className="img-fluid w-100" width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth + 60} ${svgHeight}`}>
+        <svg
+          ref={svgRef}
+          className="img-fluid w-100"
+          width={svgWidth}
+          height={svgHeight}
+          viewBox={`0 0 ${svgWidth + 60} ${svgHeight}`}
+        >
           <rect x="0" y="0" width={svgWidth} height={svgHeight} fill="#eee" />
           <g className="x-axis" />
           <g className="y-axis" />

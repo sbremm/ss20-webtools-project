@@ -2,7 +2,13 @@ import React from 'react'
 import { Button, Card, Modal } from 'react-bootstrap'
 import examples from '../data/examples'
 
-const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal, setShowExamplesModal }) => {
+const Examples = ({
+  setActiveExample,
+  setExampleStep,
+  setData,
+  showExamplesModal,
+  setShowExamplesModal,
+}) => {
   const loadExample = (example) => {
     setActiveExample(example)
     setExampleStep(0)
@@ -19,12 +25,10 @@ const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>
-          Examples
-        </Modal.Title>
+        <Modal.Title>Examples</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {examples.map((example, index) =>
+        {examples.map((example, index) => (
           <Card
             key={index}
             bg="light"
@@ -45,7 +49,7 @@ const Examples = ({ setActiveExample, setExampleStep, setData, showExamplesModal
               </Button>
             </Card.Body>
           </Card>
-        )}
+        ))}
       </Modal.Body>
     </Modal>
   )

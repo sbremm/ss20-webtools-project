@@ -3,7 +3,12 @@ import mathHelper from './mathHelper'
 test('vectorToGradientFunction example 1', () => {
   const vector = [3, 2]
   const point = [8, 4]
-  const gradientFunction = mathHelper.vectorToGradientFunction(vector[0], vector[1], point[0], point[1])
+  const gradientFunction = mathHelper.vectorToGradientFunction(
+    vector[0],
+    vector[1],
+    point[0],
+    point[1],
+  )
   expect(gradientFunction.gradient).toBeCloseTo(2 / 3)
   expect(gradientFunction.c).toBeCloseTo(-4 / 3)
 })
