@@ -207,10 +207,10 @@ const ScatterPlot = ({
       .transition()
       .ease(easePoly)
       .duration(1000)
-      .attr('x1', (component) => xScale(3 * domainMin * component.vector[0]))
-      .attr('y1', (component) => yScale(3 * domainMin * component.vector[1]))
-      .attr('x2', (component) => xScale(3 * domainMax * component.vector[0]))
-      .attr('y2', (component) => yScale(3 * domainMax * component.vector[1]))
+      .attr('x1', (component) => xScale(30 * domainMin * component.vector[0]))
+      .attr('y1', (component) => yScale(30 * domainMin * component.vector[1]))
+      .attr('x2', (component) => xScale(30 * domainMax * component.vector[0]))
+      .attr('y2', (component) => yScale(30 * domainMax * component.vector[1]))
   }, [
     data,
     setData,
